@@ -1,1 +1,55 @@
-<p>register works!</p>
+<main class="form-signin w-100 m-auto">
+    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+        <img class="mb-4"
+            src="https://www.transversal-otec.cl/wp-content/uploads/2022/03/logo-transversal-e1686778917240.jpg" alt=""
+            width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal">Registro</h1>
+
+        <div class="form-floating" bis_skin_checked="1">
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre" formControlName="nombre">
+            <label for="nombre">Nombre</label>
+        </div>
+        <div class="form-floating" bis_skin_checked="1">
+            <input type="text" class="form-control" id="apellidoPat" placeholder="Apellido Paterno"
+                formControlName="apellidoPat" required="true">
+            <label for="apellidoPat">Apellido paterno</label>
+        </div>
+        <div class="form-floating" bis_skin_checked="1">
+            <input type="text" class="form-control" id="apellidoMat" placeholder="Apellido Materno"
+                formControlName="apellidoMat">
+            <label for="apellidoMat">Apellido materno</label>
+        </div>
+        <div class="form-floating" bis_skin_checked="1">
+            <input type="text" class="form-control" id="rut" placeholder="XXXXXXXX-X" formControlName="rut">
+            <label for="rut">RUT</label>
+        </div>
+        <div class="form-floating" bis_skin_checked="1">
+            <input type="email" class="form-control" id="correo" placeholder="name@example.com"
+                formControlName="correo">
+            <label for="correo">Correo electrónico</label>
+        </div>
+        <div class="form-floating" bis_skin_checked="1">
+            <input type="password" class="form-control" id="contrasena" placeholder="Contraseña"
+                formControlName="contrasena">
+            <label for="contrasena">Contraseña</label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="genero" id="genero" formControlName="genero"
+                value="false">
+            <label class="form-check-label" for="genero">
+                Hombre
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="genero" id="genero" formControlName="genero"
+                value="true">
+            <label class="form-check-label" for="genero">
+                Mujer
+            </label>
+        </div>
+
+        <button class="btn btn-primary w-100 py-2" type="submit">Registrarme</button>
+        <p class="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
+    </form>
+</main>
