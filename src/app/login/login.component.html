@@ -1,0 +1,25 @@
+<section class="loginFormulario">
+    <div class="row justify-content-center mt-5">
+        <div class="col-12">
+            <h1 class="text-center">Inicio de sesión</h1>
+            <p class="text-center">¡Te damos la bienvenida! Inicia sesión en tu cuenta</p>
+        </div>
+        <div class="col-lg-3 col-md-6 justify-content-center align-items-center">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <label for="correo" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control input-formulario" id="correo"
+                        placeholder="Ingresa tu correo electrónico" formControlName="correo">
+                </div>
+                <div class="mb-3">
+                    <label for="contrasena" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control input-formulario" id="contrasena"
+                        placeholder="Ingresa tu contraseña" formControlName="contrasena">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+    </div>
+</section>
