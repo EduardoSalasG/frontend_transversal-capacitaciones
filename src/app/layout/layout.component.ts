@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from '../navbar/navbar.component';
+import { NavbarComponent } from '../components/navbar/navbar.component';
 import { AppComponent } from '../app.component';
 
 @Component({
@@ -10,6 +10,6 @@ import { AppComponent } from '../app.component';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
-export class LayoutComponent {
+export default class LayoutComponent {
 
 }
