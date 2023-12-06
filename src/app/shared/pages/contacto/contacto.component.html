@@ -1,0 +1,61 @@
+<app-navbar />
+<section class="contacto">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <img src="https://images.unsplash.com/photo-1610484826967-09c5720778c7" alt="" class="img-fluid">
+            </div>
+            <div class="col-12">
+                <h2 class="text-center mt-5">Contacto</h2>
+                <p>En TRANSVERSAL CAPACITACIONES LIMITADA, estamos comprometidos con el éxito de tu empresa a través de
+                    soluciones innovadoras en consultoría y capacitación. Si buscas potenciar las habilidades de tu
+                    equipo y
+                    elevar el rendimiento de tu organización, ¡estamos aquí para ayudarte!</p>
+            </div>
+            <div class="col-12 mt-4">
+                <h2 class="text-center">¿Por qué elegirnos?</h2>
+                <ul>
+                    <li><strong>Experiencia Comprobada:</strong> Con más de 9 años en el mercado, somos líderes en la
+                        intermediación de solicitudes de capacitación y la prestación de servicios educativos en Chile.
+                    </li>
+                    <li><strong>Amplia Gama de Servicios:</strong> Ofrecemos consultoría de gestión de vanguardia y
+                        cursos
+                        de capacitación adaptados a las necesidades específicas de tu industria.</li>
+                    <li><strong>Compromiso con la Excelencia:</strong> Nos esforzamos por ofrecer soluciones de alta
+                        calidad
+                        que impulsen el crecimiento y el éxito sostenible de tu organización.</li>
+                </ul>
+            </div>
+            <div class="col-12 mt-4">
+
+                <h3 class="text-center">¡Contáctanos y Potencia el Desarrollo de tu Equipo!</h3>
+
+                <div class="row justify-content-center mt-3">
+                    <div class="col-lg-6 col-md-12 justify-content-center align-items-center">
+                        <form [formGroup]="contactoForm" (ngSubmit)="onSubmit()">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="nombre" class="form-control input-formulario" id="nombre"
+                                    placeholder="Ingresa tu nombre" formControlName="nombre">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control input-formulario" id="email"
+                                    placeholder="Ingresa tu correo electrónico" formControlName="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="mensaje" class="form-label">Mensaje</label>
+                                <textarea type="text" class="form-control input-formulario" id="mensaje" rows="5"
+                                    placeholder="Ingresa tu mensaje" formControlName="mensaje">
+                                </textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

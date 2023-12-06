@@ -24,6 +24,21 @@ export const routes: Routes = [
         loadComponent: () => import('./shared/pages/error404-page/error404-page.component')
     },
     {
+        path: 'quienes-somos',
+        title: "Quienes somos",
+        loadComponent: () => import('./shared/pages/quienes-somos/quienes-somos.component')
+    },
+    {
+        path: 'resenas',
+        title: "Reseñas",
+        loadComponent: () => import('./shared/pages/resenas/resenas.component')
+    },
+    {
+        path: 'contacto',
+        title: "Contacto",
+        loadComponent: () => import('./shared/pages/contacto/contacto.component')
+    },
+    {
         path: '',
         redirectTo: 'auth',
         pathMatch: 'full'
