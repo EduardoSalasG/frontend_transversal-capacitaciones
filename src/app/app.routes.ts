@@ -25,6 +25,11 @@ export const routes: Routes = [
         ]
     },
     {
+        path: 'home',
+        title: 'Transversal Otec',
+        loadComponent: () => import('./layout/layout.component')
+    },
+    {
         path: '404',
         title: "404 Página no encontrada",
         loadComponent: () => import('./shared/pages/error404-page/error404-page.component')
@@ -46,7 +51,7 @@ export const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: 'auth',
+        redirectTo: 'home',
         pathMatch: 'full'
     },
     {
