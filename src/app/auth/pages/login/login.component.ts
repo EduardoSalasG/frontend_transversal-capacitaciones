@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { newLogin } from './interface/login.interface';
-import { LoginService } from './service/login-service.service'
+import { newLogin } from '../../../interface/auth.interface';
+import { LoginService } from '../../../service/login-service.service'
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { LoginService } from './service/login-service.service'
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export default class LoginComponent {
 
   constructor(private loginService: LoginService) { }
 

@@ -7,3 +7,8 @@ export interface newUser {
     USU_CORREO: String,
     USU_CONTRASENA: String
 }
+
+export interface newLogin {
+    USU_CORREO: String,
+    USU_CONTRASENA: String
+}

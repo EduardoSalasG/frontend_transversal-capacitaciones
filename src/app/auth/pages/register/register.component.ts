@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { RegisterService } from './service/register.service';
-import { newUser } from './interface/register.interface';
+import { RegisterService } from '../../../service/register.service';
+import { newUser } from '../../../interface/auth.interface';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +11,7 @@ import { newUser } from './interface/register.interface';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class RegisterComponent {
+export default class RegisterComponent {
 
   constructor(private registerService: RegisterService) { }
 
