@@ -1,24 +1,27 @@
 import { Routes } from '@angular/router';
-import { RegisterComponent } from './register/register.component';
-import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
-import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
-    //   {
-    //     path: 'heroes',
-    //     loadChildren: () => import('./heroes/heroes.module').then(m => m.HeroesModule),
-    //   },
     {
-        path: 'login',
-        component: LoginComponent
-    },
-    {
-        path: 'register',
-        component: RegisterComponent
+        path: 'auth',
+        loadComponent: () => import('./auth/pages/auth.layout/auth.layout.component'),
+        children: [
+            {
+                path: 'login',
+                title: 'Inicio de sesión',
+                loadComponent: () => import('./auth/pages/login/login.component'),
+            },
+            {
+                path: 'register',
+                title: 'Registro',
+                loadComponent: () => import('./auth/pages/register/register.component'),
+            },
+
+        ]
     },
     {
         path: '404',
-        component: Error404PageComponent
+        title: "404 Página no encontrada",
+        loadComponent: () => import('./shared/pages/error404-page/error404-page.component')
     },
     {
         path: '',
