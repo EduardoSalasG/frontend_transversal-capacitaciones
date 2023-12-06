@@ -15,6 +15,12 @@ export const routes: Routes = [
                 title: 'Registro',
                 loadComponent: () => import('./auth/pages/register/register.component'),
             },
+            {
+                path: '',
+                redirectTo: 'login',
+                pathMatch: 'full'
+            },
+
 
         ]
     },
