@@ -1,3 +1,35 @@
-.loginFormulario .input-formulario {
-    width: 360px;
+.loginFormulario {
+    font-family: Poppins;
+}
+
+.loginFormulario .contenedor {
+    width: fit-content;
+}
+
+.loginFormulario .input-formulario,
+.loginFormulario .btn-login-form {
+    width: -webkit-fill-available;
+}
+
+.loginFormulario .olvide-pass {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    text-align: end;
+}
+
+.loginFormulario .login-Registro {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.loginFormulario .link-registro {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    color: #0D6EFD;
 }

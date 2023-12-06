@@ -1,10 +1,8 @@
 <section class="loginFormulario">
     <div class="row justify-content-center mt-5">
-        <div class="col-lg-4 col-xxl-3">
+        <div class="col-lg-4 contenedor">
             <h1 class="text-center">Inicio de sesión</h1>
             <p class="text-center">¡Te damos la bienvenida! Inicia sesión en tu cuenta</p>
-            <!-- </div> -->
-            <!-- <div class="col-lg-3 col-md-6 justify-content-center align-items-center"> -->
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="formulario">
                 <div class="mb-3">
                     <label for="correo" class="form-label">Correo electrónico</label>
@@ -16,8 +14,15 @@
                     <input type="password" class="form-control input-formulario" id="contrasena"
                         placeholder="Ingresa tu contraseña" formControlName="contrasena">
                 </div>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="footer-formulario">
+                    <a routerLink="#" class="olvide-pass d-flex flex-column my-3">Olvidé mi contraseña</a>
+                    <button type="submit" class="btn btn-primary btn-login-form">Submit</button>
+                    <div class="d-flex mt-5 justify-content-center">
+                        <p class="login-Registro">¿No tienes una cuenta? </p>
+                        <a routerLink="/auth/register" routerLinkActive="active" class="ps-2 link-registro">
+                            Registrarme</a>
+                    </div>
+                </div>
             </form>
         </div>
 
