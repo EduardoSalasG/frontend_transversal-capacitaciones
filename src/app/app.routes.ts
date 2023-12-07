@@ -25,9 +25,34 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'home',
-        title: 'Transversal Otec',
-        loadComponent: () => import('./layout/layout.component')
+        path: 'cursos',
+        loadComponent: () => import('./products/pages/cursos/cursos.component'),
+        children: [
+            {
+                path: ':id',
+                loadComponent: () => import('./products/pages/product/product.component'),
+            },
+            {
+                path: '',
+                redirectTo: 'cursos',
+                pathMatch: 'full'
+            },
+        ]
+    },
+    {
+        path: 'leads',
+        loadComponent: () => import('./products/pages/leads/leads.component'),
+        children: [
+            {
+                path: ':id',
+                loadComponent: () => import('./products/pages/product/product.component'),
+            },
+            {
+                path: '',
+                redirectTo: 'cursos',
+                pathMatch: 'full'
+            },
+        ]
     },
     {
         path: '404',
