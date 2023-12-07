@@ -75,6 +75,11 @@ export const routes: Routes = [
         loadComponent: () => import('./shared/pages/contacto/contacto.component')
     },
     {
+        path: 'home',
+        title: "Tranversal Capacitaciones",
+        loadComponent: () => import('./shared/pages/home/home.component')
+    },
+    {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'

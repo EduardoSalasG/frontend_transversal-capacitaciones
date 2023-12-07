@@ -1,42 +1,40 @@
 <section class="registerFormulario">
     <div class="row  justify-content-center align-items-center mt-5">
-        <div class="col-10">
-            <h1 class="h3 mb-3 fw-normal text-center">
+        <div class="col-10 contenedor">
+            <h1 class="text-center">
                 <img class="mb-4"
                     src="https://www.transversal-otec.cl/wp-content/uploads/2022/03/logo-transversal-e1686778917240.jpg"
                     alt="" width="72" height="57">
                 Registro
             </h1>
-        </div>
-        <div class="col-3">
             <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
 
-                <div class="form-floating mb-3" bis_skin_checked="1">
+                <div class="mb-3">
                     <input type="text" class="form-control input-formulario" id="nombre" placeholder="Nombre"
                         formControlName="nombre">
                     <label for="nombre">Nombre</label>
                 </div>
-                <div class="form-floating mb-3" bis_skin_checked="1">
+                <div class="form-floating mb-3">
                     <input type="text" class="form-control input-formulario" id="apellidoPat"
                         placeholder="Apellido Paterno" formControlName="apellidoPat" required="true">
                     <label for="apellidoPat">Apellido paterno</label>
                 </div>
-                <div class="form-floating mb-3" bis_skin_checked="1">
+                <div class="form-floating mb-3">
                     <input type="text" class="form-control input-formulario" id="apellidoMat"
                         placeholder="Apellido Materno" formControlName="apellidoMat">
                     <label for="apellidoMat">Apellido materno</label>
                 </div>
-                <div class="form-floating mb-3" bis_skin_checked="1">
+                <div class="form-floating mb-3">
                     <input type="text" class="form-control input-formulario" id="rut" placeholder="XXXXXXXX-X"
                         formControlName="rut">
                     <label for="rut">RUT</label>
                 </div>
-                <div class="form-floating mb-3" bis_skin_checked="1">
+                <div class="form-floating mb-3">
                     <input type="email" class="form-control input-formulario" id="correo" placeholder="name@example.com"
                         formControlName="correo">
                     <label for="correo">Correo electrónico</label>
                 </div>
-                <div class="form-floating mb-3" bis_skin_checked="1">
+                <div class="form-floating mb-3">
                     <input type="password" class="form-control input-formulario" id="contrasena"
                         placeholder="Contraseña" formControlName="contrasena">
                     <label for="contrasena">Contraseña</label>

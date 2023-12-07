@@ -1,3 +1,11 @@
+.body {
+    font-family: Poppins;
+}
+
 .registerFormulario .input-formulario {
     width: 360px;
+}
+
+.registerFormulario .contenedor {
+    width: fit-content;
 }
