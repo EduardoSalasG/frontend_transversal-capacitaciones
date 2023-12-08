@@ -34,7 +34,7 @@ export const routes: Routes = [
             },
             {
                 path: '',
-                redirectTo: 'cursos',
+                redirectTo: '',
                 pathMatch: 'full'
             },
         ]
@@ -49,7 +49,7 @@ export const routes: Routes = [
             },
             {
                 path: '',
-                redirectTo: 'cursos',
+                redirectTo: '',
                 pathMatch: 'full'
             },
         ]
