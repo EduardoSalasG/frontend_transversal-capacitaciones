@@ -4,7 +4,7 @@ import { FooterComponent } from '../../../components/footer/footer.component';
 import { NavbarComponent } from '../../../components/navbar/navbar.component';
 import { FilterComponent } from '../../components/filter/filter.component';
 import { BannerComponent } from '../../../components/banner/banner.component';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { switchMap } from 'rxjs';
 
 @Component({
@@ -15,6 +15,11 @@ import { switchMap } from 'rxjs';
   styleUrl: './cursos.component.css',
 })
 export default class CursosComponent implements OnInit {
+
+  constructor(private router: Router) {
+    console.log(this.router.url);
+
+  }
   private activatedRoute = inject(ActivatedRoute)
   title = "Cursos";
   producto = false;
@@ -22,9 +27,11 @@ export default class CursosComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      this.productoId = params["id"]
-    })
+    // this.activatedRoute.params.subscribe(params => {
+    //   this.productoId = params["id"]
+    // })
+
+
   }
 
 

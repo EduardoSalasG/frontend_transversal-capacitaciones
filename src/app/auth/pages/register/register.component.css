@@ -9,3 +9,8 @@
 .registerFormulario .contenedor {
     width: fit-content;
 }
+
+.loginFormulario .input-formulario,
+.loginFormulario .btn-login-form {
+    width: -webkit-fill-available;
+}
