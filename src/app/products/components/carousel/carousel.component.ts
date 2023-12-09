@@ -1,9 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import function to register Swiper custom elements
 import { register } from 'swiper/element/bundle';
-// register Swiper custom elements
-register();
+import { RouterLink, RouterLinkActive } from '@angular/router';
 interface ObjectCarrusel {
   Curso: {
     PRO_NOMBRE: String,
@@ -13,7 +11,8 @@ interface ObjectCarrusel {
   },
   SubcategoriaCurso:
   { SCU_NOMBRE: String },
-  CUR_IMAGEN_1: String
+  CUR_IMAGEN_1: String,
+  PRO_ID: Number
 }
 interface DataCarrusel extends Array<ObjectCarrusel> {
 }
@@ -21,16 +20,13 @@ interface DataCarrusel extends Array<ObjectCarrusel> {
   selector: 'app-carousel',
 
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLinkActive, RouterLink],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.css',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 
-export class CarouselComponent implements OnInit {
-  // public cursoService = Inject(CursoService);
-
-  // getCursoInformation$!: Observable<any>;
+export class CarouselComponent {
 
   @Input() cursos: DataCarrusel = [
     {
@@ -43,15 +39,13 @@ export class CarouselComponent implements OnInit {
       SubcategoriaCurso: {
         SCU_NOMBRE: ""
       },
-      CUR_IMAGEN_1: ""
-
+      CUR_IMAGEN_1: "",
+      PRO_ID: 0
     }
   ]
 
 
   ngOnInit(): void {
-    // this.getCursoInformation$ =
-    //   this.cursoService.getCursoInformation()
   }
 
 }

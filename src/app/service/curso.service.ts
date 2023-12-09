@@ -9,7 +9,8 @@ export class CursoService {
 
   private endpoint = 'http://localhost:4000/graphql';
 
-  getCursos(): Promise<any> {
-    return request(this.endpoint, getCursosQuery);
-  }
+  public result = new Promise((resolve) => {
+    resolve(request(this.endpoint, getCursosQuery))
+  })
+
 }
