@@ -26,8 +26,12 @@ export const routes: Routes = [
     },
     {
         path: 'cursos',
-        loadComponent: () => import('./products/pages/cursos/cursos.component'),
+        loadComponent: () => import('./products/pages/layout-page/layout-page.component'),
         children: [
+            {
+                path: '',
+                loadComponent: () => import('./products/pages/cursos/cursos.component'),
+            },
             {
                 path: ':id',
                 loadComponent: () => import('./products/pages/product/product.component'),
@@ -41,8 +45,12 @@ export const routes: Routes = [
     },
     {
         path: 'leads',
-        loadComponent: () => import('./products/pages/leads/leads.component'),
+        loadComponent: () => import('./products/pages/layout-page/layout-page.component'),
         children: [
+            {
+                path: '',
+                loadComponent: () => import('./products/pages/leads/leads.component'),
+            },
             {
                 path: ':id',
                 loadComponent: () => import('./products/pages/product/product.component'),

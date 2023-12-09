@@ -1,33 +1,16 @@
-<div class="d-flex flex-column min-vh-100">
+<app-banner />
 
-    <app-navbar />
-    <app-banner />
-
-
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col mt-3">
-                    Productos destacados
-                </div>
-            </div>
-            <div class="row">
-                <div class="col mt-3">
-                    <app-filter title="{{title | lowercase}}"></app-filter>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    {{productoId}}
-                </div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col mt-3">
+                Productos destacados
             </div>
         </div>
-    </section>
-
-    <router-outlet></router-outlet>
-
-
-
-    <app-footer></app-footer>
-
-</div>
+        <div class="row">
+            <div class="col mt-3">
+                <app-filter title="{{title | lowercase}}"></app-filter>
+            </div>
+        </div>
+    </div>
+</section>
