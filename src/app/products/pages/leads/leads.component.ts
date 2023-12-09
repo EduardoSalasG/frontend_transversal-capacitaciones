@@ -5,6 +5,11 @@ import { NavbarComponent } from '../../../components/navbar/navbar.component';
 import { BannerComponent } from '../../../components/banner/banner.component';
 import { FilterComponent } from '../../components/filter/filter.component';
 
+
+interface categorias {
+  nombre: String,
+  subcategorias: String[]
+}
 @Component({
   selector: 'app-leads',
   standalone: true,
@@ -13,6 +18,14 @@ import { FilterComponent } from '../../components/filter/filter.component';
   styleUrl: './leads.component.css'
 })
 export default class LeadsComponent {
+
+  public categoriasArray: categorias[] = [
+    {
+      nombre: 'IT',
+      subcategorias: ['Programación', 'Excel', 'Business Intelligence']
+    }
+  ]
+
   title = 'Leads'
 
 }

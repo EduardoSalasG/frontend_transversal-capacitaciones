@@ -92,7 +92,6 @@ export default class CheckoutComponent {
 
   onSelected(value: any): void {
     (value) ? this.comunas = this.regiones[value - 1].comunas : this.comunas = []
-
   }
 
   cambiarDT() {
@@ -112,10 +111,8 @@ export default class CheckoutComponent {
     metodoDePago: new FormControl('')
   })
 
-
   onSubmit() {
     console.log(this.checkoutForm.value)
-
   }
 
 }

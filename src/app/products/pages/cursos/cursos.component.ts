@@ -5,7 +5,12 @@ import { NavbarComponent } from '../../../components/navbar/navbar.component';
 import { FilterComponent } from '../../components/filter/filter.component';
 import { BannerComponent } from '../../../components/banner/banner.component';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { switchMap } from 'rxjs';
+
+
+interface categorias {
+  nombre: String,
+  subcategorias: String[]
+}
 
 @Component({
   selector: 'app-cursos',
@@ -15,6 +20,14 @@ import { switchMap } from 'rxjs';
   styleUrl: './cursos.component.css',
 })
 export default class CursosComponent implements OnInit {
+
+  public categoriasArray: categorias[] = [
+    {
+      nombre: 'Salud',
+      subcategorias: ['Primeros auxilios', 'Kinesiología', 'Instrumentación quirúrgica']
+    }
+  ]
+
 
   constructor(private router: Router) {
     console.log(this.router.url);

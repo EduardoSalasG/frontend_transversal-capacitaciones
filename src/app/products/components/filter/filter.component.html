@@ -1,18 +1,20 @@
 <section class="d-flex flex-row justify-content-center">
     <h4>Todos los {{title}}</h4>
 
-    <select class=" form-select select mx-3" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+    <select #categoria class=" form-select select mx-3" aria-label="Default select example"
+        (change)="onSelected(categoria.selectedIndex)">
+        <option selected>Escoger categoría...</option>
+        @for (categoria of categoriasArray; track $index) {
+        <option value="{{categoria.nombre}}">{{categoria.nombre}}
+        </option>
+        }
     </select>
 
     <select class="form-select select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option value="">Escoger subcategoría...</option>
+        @for (subcategoria of subcategorias; track $index) {
+        <option>{{subcategoria}}</option>
+        }
     </select>
 
 </section>
