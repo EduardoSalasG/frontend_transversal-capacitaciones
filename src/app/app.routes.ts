@@ -63,6 +63,11 @@ export const routes: Routes = [
         ]
     },
     {
+        path: 'checkout',
+        title: "Checkout",
+        loadComponent: () => import('./shared/pages/checkout/checkout.component')
+    },
+    {
         path: '404',
         title: "404 Página no encontrada",
         loadComponent: () => import('./shared/pages/error404-page/error404-page.component')
