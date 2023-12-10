@@ -117,14 +117,7 @@ export default class ProductComponent implements OnInit {
     }
   };
 
-  // @Input() lead: ObjectCurso = {
-
-  // }
-
   constructor(private route: ActivatedRoute, private productoService: ProductoService, private router: Router) { }
-
-  // @Input() productoId = 0
-
   comprarProducto() {
     const infoProducto = {
       nombre: this.curso.Curso.PRO_NOMBRE,
@@ -148,28 +141,62 @@ export default class ProductComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.id = params['id']
-    })
+    this.route.params.subscribe(async params => {
+      this.id = params['id'];
 
-    await this.productoService.getCursoById(this.id).then((curso) => {
-      console.log(curso)
-      this.curso = curso;
-    })
+      try {
+        this.curso = await this.productoService.getCursoById(this.id);
+        console.log(this.curso);
 
-    await this.productoService.getLeadById(this.id).then((lead) => {
-      this.lead = lead;
-    })
+        this.lead = await this.productoService.getLeadById(this.id);
 
-    if (this.curso === null) {
-      this.isCurso = false
+        if (this.curso) {
+          this.isCurso = true;
+        } else {
+          this.isCurso = false;
+          this.router.navigate(['/']); // Redirigir a la página de inicio
+        }
+      } catch (error) {
+        console.error('Error al obtener curso o lead:', error);
+        this.isCurso = false;
+        this.router.navigate(['/']); // Redirigir a la página de inicio
+      }
+    });
 
-      return this.isCurso
-    } else {
-      this.isCurso = true
 
-      return this.isCurso
-    }
+
+    // this.route.params.subscribe(params => {
+    //   this.id = params['id']
+    // })
+
+    // await this.productoService.getCursoById(this.id).then((curso) => {
+    //   console.log(curso)
+    //   this.curso = curso;
+    // })
+
+    // await this.productoService.getLeadById(this.id).then((lead) => {
+    //   this.lead = lead;
+    // })
+
+    // if (this.curso) {
+    //   this.isCurso = true
+    // } else if (this.curso === null) {
+    //   this.isCurso = false
+    // } else if (!this.curso && !this.lead) {
+    //   this.router.navigate(['/']);
+    // }
+
+    // if (this.curso === null) {
+    //   this.isCurso = false
+
+    //   return this.isCurso
+    // }
+
+    // else {
+    //   this.isCurso = true
+
+    //   return this.isCurso
+    // }
 
   }
 

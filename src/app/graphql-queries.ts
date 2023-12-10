@@ -116,4 +116,15 @@ query GetValoraciones {
   }
 }
 
-` 
+`
+
+export const queryLogin = `
+mutation Login($usuCorreo: String!, $usuContrasena: String!) {
+  login(USU_CORREO: $usuCorreo, USU_CONTRASENA: $usuContrasena) {
+    ok
+    status
+    token
+    msg
+  }
+}
+`

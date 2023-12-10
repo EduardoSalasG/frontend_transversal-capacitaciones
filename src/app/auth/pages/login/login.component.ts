@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { newLogin } from '../../../interface/auth.interface';
 import { LoginService } from '../../../service/login-service.service'
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +14,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export default class LoginComponent {
-
-  constructor(private loginService: LoginService) { }
+  loginInfo: any
+  usuCorreo: any
+  usuContrasena: any
+  constructor(private loginService: LoginService, private router: Router, private cookieService: CookieService) { }
 
   loginForm = new FormGroup({
     correo: new FormControl(''),
@@ -27,8 +30,30 @@ export default class LoginComponent {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value)
+    this.usuCorreo = this.loginForm.value.correo;
+    this.usuContrasena = this.loginForm.value.contrasena;
+
+    try {
+      this.loginService.login(this.usuCorreo, this.usuContrasena)
+        .then((loginInfo) => {
+          this.loginInfo = loginInfo;
+          console.log(this.loginInfo);
+
+          if (this.loginInfo && this.loginInfo.ok && this.loginInfo.token) {
+            this.cookieService.set('token', this.loginInfo.token);
+            console.log('token guardado');
+          } else {
+            console.log(this.loginInfo.msg);
+          }
+        })
+        .catch((error) => {
+          console.error('Error al iniciar sesión:', error);
+        });
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+    }
   }
+
 
 
 }

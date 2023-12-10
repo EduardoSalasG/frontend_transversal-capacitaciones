@@ -1,5 +1,5 @@
 <div class="d-flex flex-column min-vh-100">
-    @if(isCurso){
+    @if(isCurso && curso.Curso){
     <section class="section-producto curso pt-5">
         <div class="container">
             <div class="row">
@@ -96,7 +96,7 @@
             </div>
         </div>
     </section>
-    }@else {
+    }@else if(lead && lead.Lead) {
     <section class="section-producto curso pt-5">
         <div class="container">
             <div class="row">
