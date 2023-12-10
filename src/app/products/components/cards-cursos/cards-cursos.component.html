@@ -1,0 +1,28 @@
+<section class="cards-section">
+    <div class="container">
+        <div class="row">
+            @for(item of cursos; track item.Curso.PRO_NOMBRE)
+            {
+            <div class="col-4">
+                <div class="card cursos-productos mb-4">
+                    @if (!item.CUR_IMAGEN_1) {
+                    <img src="{{item.CUR_IMAGEN_1}}" class="card-img-top" alt="...">
+                    }@else{
+                    <img src="https://redcapacitacion.cl/datos/img-etiquetas/32.jpg" class="card-img-top" alt="...">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.Curso.PRO_NOMBRE}}</h5>
+                        <p class="card-text subcategoria">{{item.SubcategoriaCurso.SCU_NOMBRE}}</p>
+                        <p class="card-text descripcion-corta">{{item.Curso.PRO_DESCRIPCION_CORTA}}</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <p class="card-text m-0">{{item.Curso.PRO_PRECIO| currency:'CLP'}}</p>
+                        <a routerLink="/cursos/{{item.PRO_ID}}" class="btn btn-primary">Ver detalle</a>
+                    </div>
+                </div>
+
+            </div>
+            }
+        </div>
+    </div>
+</section>

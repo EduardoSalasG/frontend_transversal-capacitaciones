@@ -1,16 +1,36 @@
 <app-banner />
 
-<section>
-    <div class="container">
+<section class="productos-destacados-carrusel mb-5">
+    <div class="container mt-5 pt-3">
         <div class="row">
-            <div class="col mt-3">
-                Productos destacados
+            <div class="col-12 mb-3">
+                <p class="title-carousel">Cursos destacados</p>
             </div>
+            <div class="col-12">
+                <app-carousel [cursos]="cursos" [cantidadItems]="cantidadItems" />
+            </div>
+
         </div>
+    </div>
+</section>
+
+<section class="mt-4">
+    <div class="container">
         <div class="row">
             <div class="col mt-3">
                 <app-filter title="{{title}}" [categoriasArray]="categoriasArray"></app-filter>
             </div>
+        </div>
+    </div>
+</section>
+
+<section class="productos-destacados-carrusel mb-5">
+    <div class="container mt-3 pt-3">
+        <div class="row">
+            <div class="col-12">
+                <app-cards-cursos [cursos]="cursos" />
+            </div>
+
         </div>
     </div>
 </section>

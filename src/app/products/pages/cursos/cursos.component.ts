@@ -5,6 +5,9 @@ import { NavbarComponent } from '../../../components/navbar/navbar.component';
 import { FilterComponent } from '../../components/filter/filter.component';
 import { BannerComponent } from '../../../components/banner/banner.component';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { CarouselComponent } from '../../components/carousel/carousel.component';
+import { CursoService } from '../../../service/curso.service';
+import { CardsCursosComponent } from '../../components/cards-cursos/cards-cursos.component';
 
 
 interface categorias {
@@ -15,11 +18,14 @@ interface categorias {
 @Component({
   selector: 'app-cursos',
   standalone: true,
-  imports: [CommonModule, FooterComponent, NavbarComponent, FilterComponent, BannerComponent, RouterModule],
+  imports: [CommonModule, FooterComponent, NavbarComponent, FilterComponent,
+    BannerComponent, RouterModule, CarouselComponent, CardsCursosComponent],
   templateUrl: './cursos.component.html',
   styleUrl: './cursos.component.css',
 })
 export default class CursosComponent implements OnInit {
+  cursos: any[] = [];
+  cantidadItems: any = 3
 
   public categoriasArray: categorias[] = [
     {
@@ -29,8 +35,7 @@ export default class CursosComponent implements OnInit {
   ]
 
 
-  constructor(private router: Router) {
-    console.log(this.router.url);
+  constructor(private router: Router, private cursoService: CursoService) {
 
   }
   private activatedRoute = inject(ActivatedRoute)
@@ -44,6 +49,12 @@ export default class CursosComponent implements OnInit {
     //   this.productoId = params["id"]
     // })
 
+    setTimeout(() => {
+      this.cursoService.result.then((data: any) => {
+        this.cursos = data.getCursosProducto;
+      })
+
+    }, 3000)
 
   }
 

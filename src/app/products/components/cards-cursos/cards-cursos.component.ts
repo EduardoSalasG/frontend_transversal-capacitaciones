@@ -1,7 +1,7 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-interface ObjectCarrusel {
+interface ObjectCard {
   Curso: {
     PRO_NOMBRE: String,
     PRO_DESCRIPCION_CORTA: String,
@@ -13,20 +13,17 @@ interface ObjectCarrusel {
   CUR_IMAGEN_1: String,
   PRO_ID: Number
 }
-interface DataCarrusel extends Array<ObjectCarrusel> {
+interface DataCard extends Array<ObjectCard> {
 }
 @Component({
-  selector: 'app-carousel',
+  selector: 'app-cards-cursos',
   standalone: true,
   imports: [CommonModule, RouterLinkActive, RouterLink],
-  templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.css',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  templateUrl: './cards-cursos.component.html',
+  styleUrl: './cards-cursos.component.css'
 })
-
-export class CarouselComponent {
-
-  @Input() cursos: DataCarrusel = [
+export class CardsCursosComponent {
+  @Input() cursos: DataCard = [
     {
       Curso: {
         PRO_NOMBRE: "",
@@ -41,9 +38,6 @@ export class CarouselComponent {
       PRO_ID: 0
     }
   ]
-
-  @Input() cantidadItems: any = 0;
   ngOnInit(): void {
   }
-
 }
