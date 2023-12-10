@@ -35,3 +35,15 @@
     font-weight: 700;
     line-height: normal;
 }
+
+.productos-destacados-carrusel .title-carousel {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.productos-destacados-carrusel .title-carousel a.link-carousel {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    color: #000;
+}

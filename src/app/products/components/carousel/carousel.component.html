@@ -15,8 +15,8 @@
                         <p class="card-text descripcion-corta">{{item.Curso.PRO_DESCRIPCION_CORTA}}</p>
                     </div>
                     <div class="card-footer d-flex justify-content-between align-items-center">
-                        <p class="card-text m-0">{{item.Curso.PRO_PRECIO| currency:'$':true:'1.0'}}</p>
-                        <a routerLink="/cursos/{{item.PRO_ID}}" class="btn btn-primary">Ir a detalle del curso</a>
+                        <p class="card-text m-0">{{item.Curso.PRO_PRECIO| currency:'CLP'}}</p>
+                        <a routerLink="/cursos/{{item.PRO_ID}}" class="btn btn-primary">Ver detalle</a>
                     </div>
                 </div>
             </div>

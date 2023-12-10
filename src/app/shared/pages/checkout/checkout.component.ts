@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../../../components/navbar/navbar.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductoService } from '../../../service/producto.service';
 
 @Component({
   selector: 'app-checkout',
@@ -15,13 +16,11 @@ export default class CheckoutComponent {
   public comunas: any
   public dt = ''
 
-  public producto = {
-    nombre: "El curso maravilloso",
-    descripcion: "Es maravilloso de verdad",
-    precio: "99990",
-  }
+  public infoProducto: any;
 
-  public total = this.producto.precio
+  constructor(private productoService: ProductoService) {
+    this.infoProducto = this.productoService.getCursoInfo();
+  }
 
   regiones = [
     {
@@ -90,6 +89,8 @@ export default class CheckoutComponent {
     }
   ]
 
+
+
   onSelected(value: any): void {
     (value) ? this.comunas = this.regiones[value - 1].comunas : this.comunas = []
   }
@@ -114,5 +115,7 @@ export default class CheckoutComponent {
   onSubmit() {
     console.log(this.checkoutForm.value)
   }
+
+
 
 }

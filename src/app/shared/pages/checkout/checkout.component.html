@@ -1,6 +1,5 @@
 <app-navbar />
 
-
 <div class="container mb-1">
     <main>
         <div class="py-5 text-center">
@@ -21,11 +20,10 @@
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between lh-sm">
                         <div>
-                            <h6 class="my-0">{{producto.nombre}}</h6>
-                            <small class="text-muted">{{producto.descripcion}}</small>
+                            <h6 class="my-0">{{infoProducto.nombre}}</h6>
                         </div>
-                        <span class="text-muted">{{producto.precio | currency:'CLP'}}</span>
                     </li>
+
                     <!-- <li class="list-group-item d-flex justify-content-between lh-sm">
                         <div>
                             <h6 class="my-0">Second product</h6>
@@ -49,7 +47,7 @@
                     </li> -->
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total</span>
-                        <strong>{{total | currency:'CLP'}}</strong>
+                        <strong>{{infoProducto.precio | currency:'CLP'}}</strong>
                     </li>
                 </ul>
 

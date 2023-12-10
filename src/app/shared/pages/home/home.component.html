@@ -8,7 +8,8 @@
         <div class="container mt-5 pt-3">
             <div class="row">
                 <div class="col-12 mb-3">
-                    <p>Cursos destacados <a routerLink="/cursos">Ver todos los cursos</a></p>
+                    <p class="title-carousel">Cursos destacados <a class="link-carousel" routerLink="/cursos">Ver todos
+                            los cursos</a></p>
                 </div>
                 <div class="col-12">
                     <app-carousel [cursos]="cursos" />
@@ -22,7 +23,8 @@
         <div class="container mt-5 pt-3">
             <div class="row">
                 <div class="col-12 mb-3">
-                    <p>Leads destacados <a routerLink="/leads">Ver todos los leads</a></p>
+                    <p class="title-carousel">Leads destacados <a class="link-carousel" routerLink="/leads">Ver todos
+                            los leads</a></p>
                 </div>
                 <div class="col-12">
                     <app-carousel-leads [leads]="leads" />
