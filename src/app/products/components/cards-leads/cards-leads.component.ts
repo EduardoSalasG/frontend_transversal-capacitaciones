@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-interface ObjectCarrusel {
+
+interface ObjectCard {
   PRO_ID: Number
   Lead: {
     PRO_NOMBRE: String,
@@ -13,17 +14,18 @@ interface ObjectCarrusel {
   { SLE_NOMBRE: String },
 
 }
-interface DataCarrusel extends Array<ObjectCarrusel> {
+interface DataCard extends Array<ObjectCard> {
 }
 @Component({
-  selector: 'app-carousel-leads',
+  selector: 'app-cards-leads',
   standalone: true,
   imports: [CommonModule, RouterLinkActive, RouterLink],
-  templateUrl: './carousel-leads.component.html',
-  styleUrl: './carousel-leads.component.css'
+  templateUrl: './cards-leads.component.html',
+  styleUrl: './cards-leads.component.css'
 })
-export class CarouselLeadsComponent {
-  @Input() leads: DataCarrusel = [
+export class CardsLeadsComponent {
+
+  @Input() leads: DataCard = [
     {
       PRO_ID: 0,
       Lead: {
@@ -37,7 +39,4 @@ export class CarouselLeadsComponent {
       }
     }
   ]
-
-  @Input() cantidadItems: any = 0;
-
 }

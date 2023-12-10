@@ -1,10 +1,13 @@
-<section class="carusel-section">
+<section class="cards-section">
     <div class="container">
         <div class="row">
-            @for(item of leads.slice(0,cantidadItems); track item.Lead.PRO_NOMBRE){
+            @for(item of leads; track item.Lead.PRO_NOMBRE)
+            {
             <div class="col-4">
-                <div class="card productos-destacados">
+                <div class="card leads-productos mb-4">
+
                     <img src="https://redcapacitacion.cl/datos/img-etiquetas/32.jpg" class="card-img-top" alt="...">
+
                     <div class="card-body">
                         <h5 class="card-title">{{item.Lead.PRO_NOMBRE}}</h5>
                         <p class="card-text subcategoria">{{item.SubcategoriaLead.SLE_NOMBRE}}</p>
@@ -15,8 +18,8 @@
                         <a routerLink="/leads/{{item.PRO_ID}}" class="btn btn-primary">Ver detalle</a>
                     </div>
                 </div>
-            </div>
 
+            </div>
             }
         </div>
     </div>

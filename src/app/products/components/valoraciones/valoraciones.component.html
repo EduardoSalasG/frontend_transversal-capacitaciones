@@ -7,71 +7,23 @@
             <div class="col-12">
                 <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="30"
                     slides-per-view="4">
+                    @for (item of valoraciones; track $index) {
                     <swiper-slide>
-                        <div class="card" style="width: 18rem;">
+                        <div class="card valoraciones-card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
-                                    <p>estrellas</p>
-                                    <p>06/12/2023</p>
+                                    <div class="d-flex">
+                                        <p class="pe-2">{{item.VAL_PUNTAJE}}</p>
+                                        <i class="bi bi-star"></i>
+                                    </div>
+                                    <p>{{item.VAL_FECHA | date:'dd-MM-yyyy'}}</p>
                                 </div>
-                                <h5 class="card-title">Nombre</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Curso/lead</h6>
-                                <p class="card-text">breve Opinion del cliente</p>
+                                <h5 class="card-title">{{item.Producto.PRO_NOMBRE}}</h5>
+                                <p class="card-text">{{item.VAL_COMENTARIO}}</p>
                             </div>
                         </div>
                     </swiper-slide>
-                    <swiper-slide>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <p>estrellas</p>
-                                    <p>06/12/2023</p>
-                                </div>
-                                <h5 class="card-title">Nombre</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Curso/lead</h6>
-                                <p class="card-text">breve Opinion del cliente</p>
-                            </div>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <p>estrellas</p>
-                                    <p>06/12/2023</p>
-                                </div>
-                                <h5 class="card-title">Nombre</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Curso/lead</h6>
-                                <p class="card-text">breve Opinion del cliente</p>
-                            </div>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <p>estrellas</p>
-                                    <p>06/12/2023</p>
-                                </div>
-                                <h5 class="card-title">Nombre</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Curso/lead</h6>
-                                <p class="card-text">breve Opinion del cliente</p>
-                            </div>
-                        </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <p>estrellas</p>
-                                    <p>06/12/2023</p>
-                                </div>
-                                <h5 class="card-title">Nombre</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Curso/lead</h6>
-                                <p class="card-text">breve Opinion del cliente</p>
-                            </div>
-                        </div>
-                    </swiper-slide>
+                    }
                 </swiper-container>
             </div>
         </div>

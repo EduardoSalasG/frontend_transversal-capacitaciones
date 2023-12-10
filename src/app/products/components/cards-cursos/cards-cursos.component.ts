@@ -1,43 +1,43 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-interface ObjectCarrusel {
-  PRO_ID: Number
-  Lead: {
+interface ObjectCard {
+  Curso: {
     PRO_NOMBRE: String,
     PRO_DESCRIPCION_CORTA: String,
     PRO_DESTACADO: Boolean,
     PRO_PRECIO: any
   },
-  SubcategoriaLead:
-  { SLE_NOMBRE: String },
-
+  SubcategoriaCurso:
+  { SCU_NOMBRE: String },
+  CUR_IMAGEN_1: String,
+  PRO_ID: Number
 }
-interface DataCarrusel extends Array<ObjectCarrusel> {
+interface DataCard extends Array<ObjectCard> {
 }
 @Component({
-  selector: 'app-carousel-leads',
+  selector: 'app-cards-cursos',
   standalone: true,
   imports: [CommonModule, RouterLinkActive, RouterLink],
-  templateUrl: './carousel-leads.component.html',
-  styleUrl: './carousel-leads.component.css'
+  templateUrl: './cards-cursos.component.html',
+  styleUrl: './cards-cursos.component.css'
 })
-export class CarouselLeadsComponent {
-  @Input() leads: DataCarrusel = [
+export class CardsCursosComponent {
+  @Input() cursos: DataCard = [
     {
-      PRO_ID: 0,
-      Lead: {
+      Curso: {
         PRO_NOMBRE: "",
         PRO_DESCRIPCION_CORTA: "",
         PRO_DESTACADO: false,
         PRO_PRECIO: ""
       },
-      SubcategoriaLead: {
-        SLE_NOMBRE: ""
-      }
+      SubcategoriaCurso: {
+        SCU_NOMBRE: ""
+      },
+      CUR_IMAGEN_1: "",
+      PRO_ID: 0
     }
   ]
-
-  @Input() cantidadItems: any = 0;
-
+  ngOnInit(): void {
+  }
 }

@@ -9,6 +9,7 @@ import { CursoService } from '../../../service/curso.service';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CarouselLeadsComponent } from '../../../products/components/carousel-leads/carousel-leads.component';
 import { LeadService } from '../../../service/lead.service';
+import { ValoracionService } from '../../../service/valoracion.service';
 
 @Component({
   selector: 'app-home',
@@ -20,20 +21,29 @@ import { LeadService } from '../../../service/lead.service';
 })
 
 export default class HomeComponent implements OnInit {
-  cursos: any;
-  leads: any;
+  cursos: any[] = [];
+  leads: any[] = [];
+  valoraciones: any[] = []
+  cantidadItems: any = 3
+  texto: any = "Elige el curso"
 
-  constructor(private cursoService: CursoService, private leadService: LeadService) { }
+  constructor(private cursoService: CursoService, private leadService: LeadService,
+    private valoracionService: ValoracionService) { }
 
   ngOnInit(): void {
-    this.cursoService.result.then((data: any) => {
-      this.cursos = data.getCursosProducto;
-      console.log(this.cursos)
-    })
+    setTimeout(() => {
+      this.cursoService.result.then((data: any) => {
+        this.cursos = data.getCursosProducto;
+      })
 
-    this.leadService.result.then((data: any) => {
-      this.leads = data.getLeadsProducto;
-      console.log(this.leads)
-    })
+      this.leadService.result.then((data: any) => {
+        this.leads = data.getLeadsProducto;
+      })
+
+      this.valoracionService.result.then((data: any) => {
+        this.valoraciones = data.getValoraciones;
+      })
+    }, 3000);
+
   }
 }

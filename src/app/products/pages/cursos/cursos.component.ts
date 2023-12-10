@@ -6,6 +6,9 @@ import { FilterCursosComponent } from '../../components/filter-cursos/filter-cur
 import { BannerComponent } from '../../../components/banner/banner.component';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ProductoService } from '../../../service/producto.service';
+import { CarouselComponent } from '../../components/carousel/carousel.component';
+import { CursoService } from '../../../service/curso.service';
+import { CardsCursosComponent } from '../../components/cards-cursos/cards-cursos.component';
 export interface Categorias {
   CCU_ID: string;
   CCU_NOMBRE: string;
@@ -25,11 +28,13 @@ export interface Subcategoria {
     NavbarComponent,
     FilterCursosComponent,
     BannerComponent,
-    RouterModule,],
+    RouterModule, CarouselComponent, CardsCursosComponent],
   templateUrl: './cursos.component.html',
   styleUrl: './cursos.component.css',
 })
 export default class CursosComponent implements OnInit {
+  cursos: any[] = [];
+  cantidadItems: any = 3
 
   private productosService = Inject(ProductoService)
 
@@ -103,8 +108,7 @@ export default class CursosComponent implements OnInit {
   ]
 
 
-  constructor(private router: Router) {
-    console.log(this.router.url);
+  constructor(private router: Router, private cursoService: CursoService) {
 
   }
   private activatedRoute = inject(ActivatedRoute)
@@ -119,6 +123,17 @@ export default class CursosComponent implements OnInit {
     //     this.categoriasArray = data.getCategoriasCurso;
     //     console.log(this.categoriasArray)
     //   })
+    // this.activatedRoute.params.subscribe(params => {
+    //   this.productoId = params["id"]
+    // })
+
+    setTimeout(() => {
+      this.cursoService.result.then((data: any) => {
+        this.cursos = data.getCursosProducto;
+      })
+
+    }, 3000)
+
   }
 
 

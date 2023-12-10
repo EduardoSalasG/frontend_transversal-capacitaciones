@@ -1,6 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { register } from 'swiper/element/bundle';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 interface ObjectCarrusel {
   Curso: {
@@ -18,7 +17,6 @@ interface DataCarrusel extends Array<ObjectCarrusel> {
 }
 @Component({
   selector: 'app-carousel',
-
   standalone: true,
   imports: [CommonModule, RouterLinkActive, RouterLink],
   templateUrl: './carousel.component.html',
@@ -44,7 +42,7 @@ export class CarouselComponent {
     }
   ]
 
-
+  @Input() cantidadItems: any = 0;
   ngOnInit(): void {
   }
 

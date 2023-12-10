@@ -1,0 +1,31 @@
+.cards-section .container {
+    font-family: Poppins;
+}
+
+.cards-section .leads-productos {
+    height: 400px;
+    width: 24rem;
+}
+
+.cards-section .card-title {
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: #212529
+}
+
+.cards-section .subcategoria {
+    font-size: 16px;
+    font-weight: 500;
+    color: #6C757D;
+}
+
+.cards-section .descripcion-corta {
+    font-size: 14px;
+    font-weight: 400;
+    color: #212529;
+}
+
+.leads-productos {
+    height: 500px;
+}

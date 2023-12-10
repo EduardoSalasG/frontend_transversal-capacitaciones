@@ -1,10 +1,10 @@
-<section class="carusel-section">
+<section class="cards-section">
     <div class="container">
         <div class="row">
-            @for(item of cursos.slice(0,cantidadItems); track item.Curso.PRO_NOMBRE)
+            @for(item of cursos; track item.Curso.PRO_NOMBRE)
             {
             <div class="col-4">
-                <div class="card productos-destacados">
+                <div class="card cursos-productos mb-4">
                     @if (!item.CUR_IMAGEN_1) {
                     <img src="{{item.CUR_IMAGEN_1}}" class="card-img-top" alt="...">
                     }@else{

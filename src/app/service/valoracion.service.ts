@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { getCursosQuery } from '../graphql-queries';
+import { getValoracionesQuery } from '../graphql-queries';
 import { request } from 'graphql-request';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CursoService {
-
+export class ValoracionService {
   private endpoint = 'http://localhost:4000/graphql';
 
   public result = new Promise((resolve) => {
-    resolve(request(this.endpoint, getCursosQuery))
+    resolve(request(this.endpoint, getValoracionesQuery))
   })
+
 
 }

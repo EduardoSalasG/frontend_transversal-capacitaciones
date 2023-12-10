@@ -88,3 +88,17 @@ query GetCategoriasCurso {
 
   }
 }`
+export const getValoracionesQuery = `
+query GetValoraciones {
+  getValoraciones {
+    VAL_FECHA
+    VAL_PUNTAJE
+    VAL_COMENTARIO
+    PRO_ID
+    Producto {
+      PRO_NOMBRE
+    }
+  }
+}
+
+` 
