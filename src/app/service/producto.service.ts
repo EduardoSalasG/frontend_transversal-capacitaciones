@@ -10,6 +10,7 @@ export class ProductoService {
 
   private endpoint = 'http://localhost:4000/graphql';
 
+  private productoInfo: any;
 
 
   constructor(private http: HttpClient) { }
@@ -40,6 +41,14 @@ export class ProductoService {
       .then((response) => response.data.getLeadProductoById);
   }
 
+
+  setProductoInfo(info: any) {
+    this.productoInfo = info;
+  }
+
+  getCursoInfo() {
+    return this.productoInfo;
+  }
 }
 
 

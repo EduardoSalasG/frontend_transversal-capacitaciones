@@ -79,14 +79,14 @@
                         <p class="subtitle">{{curso.CUR_ESTRUCTURA}}</p>
                     </div>
                     <div class="mt-2 d-flex justify-content-start">
-                        <p>Precio normal: <span>{{curso.Curso.PRO_PRECIO | currency:'$':true:'1.0'}}</span></p>
+                        <p>Precio normal: <span>{{curso.Curso.PRO_PRECIO | currency:'CLP'}}</span></p>
                         <p class="ms-3">Precio oferta: <span>{{curso.Curso.PRO_PRECIO_DESCUENTO |
-                                currency:'$':true:'1.0'}}</span>
+                                currency:'CLP'}}</span>
                         </p>
                     </div>
 
                     <div class="d-flex justify-content-around mt-3">
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" (click)="comprarProducto()">
                             Comprar curso
                         </button>
                         <button class="btn btn-warning">

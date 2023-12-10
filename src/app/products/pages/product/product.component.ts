@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ProductoService } from '../../../service/producto.service';
 
 
@@ -40,7 +40,7 @@ interface ObjectCurso {
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLinkActive, RouterLink],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
@@ -85,9 +85,21 @@ export default class ProductComponent implements OnInit {
 
   // }
 
-  constructor(private route: ActivatedRoute, private productoService: ProductoService) { }
+  constructor(private route: ActivatedRoute, private productoService: ProductoService, private router: Router) { }
 
   // @Input() productoId = 0
+
+  comprarProducto() {
+    const infoProducto = {
+      nombre: this.curso.Curso.PRO_NOMBRE,
+      precio: this.curso.Curso.PRO_PRECIO,
+      descripcion: this.curso.Curso.PRO_DESCRIPCION,
+    }
+
+    this.productoService.setProductoInfo(infoProducto)
+    this.router.navigate(['/checkout'])
+  }
+
   async ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['id']
