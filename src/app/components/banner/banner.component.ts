@@ -9,6 +9,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './banner.component.css'
 })
 export class BannerComponent {
-  @Input() imageUrl = ''
+  @Input() texto = ''
 
 }

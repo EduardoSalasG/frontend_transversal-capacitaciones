@@ -44,7 +44,7 @@ export class CarouselComponent {
     }
   ]
 
-
+  @Input() cantidadItems: any = 0;
   ngOnInit(): void {
   }
 

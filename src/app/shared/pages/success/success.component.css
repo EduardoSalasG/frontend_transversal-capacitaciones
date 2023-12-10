@@ -1,0 +1,18 @@
+.success-page {
+    font-family: Poppins;
+}
+
+.success-page .text-title {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.success-page .text-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.success-page .text-subtitle2 {
+    font-size: 14px;
+    font-weight: 500;
+}

@@ -1,3 +1,8 @@
-.mySwiper {
-    height: 206px;
+.productos-destacados-carrusel .mySwiper {
+    height: 240px;
+}
+
+.productos-destacados-carrusel .valoraciones-card {
+    height: 12rem;
+    width: 18rem;
 }

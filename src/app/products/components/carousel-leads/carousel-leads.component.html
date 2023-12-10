@@ -1,7 +1,7 @@
 <section class="carusel-section">
     <div class="container">
         <div class="row">
-            @for(item of leads; track item.Lead.PRO_NOMBRE){
+            @for(item of leads.slice(0,cantidadItems); track item.Lead.PRO_NOMBRE){
             <div class="col-4">
                 <div class="card productos-destacados">
                     <img src="https://redcapacitacion.cl/datos/img-etiquetas/32.jpg" class="card-img-top" alt="...">

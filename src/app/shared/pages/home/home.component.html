@@ -2,7 +2,7 @@
 
     <app-navbar />
 
-    <app-banner />
+    <app-banner id="banner-principal-home" [texto]="texto" />
 
     <section class="productos-destacados-carrusel">
         <div class="container mt-5 pt-3">
@@ -12,7 +12,7 @@
                             los cursos</a></p>
                 </div>
                 <div class="col-12">
-                    <app-carousel [cursos]="cursos" />
+                    <app-carousel [cursos]="cursos" [cantidadItems]="cantidadItems" />
                 </div>
 
             </div>
@@ -27,7 +27,7 @@
                             los leads</a></p>
                 </div>
                 <div class="col-12">
-                    <app-carousel-leads [leads]="leads" />
+                    <app-carousel-leads [leads]="leads" [cantidadItems]="cantidadItems" />
                 </div>
             </div>
         </div>
@@ -45,6 +45,6 @@
         </div>
     </section>
 
-    <app-valoraciones />
+    <app-valoraciones [valoraciones]="valoraciones" />
     <app-footer />
 </div>

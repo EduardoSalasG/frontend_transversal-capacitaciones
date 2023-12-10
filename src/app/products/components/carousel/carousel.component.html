@@ -1,7 +1,8 @@
 <section class="carusel-section">
     <div class="container">
         <div class="row">
-            @for(item of cursos; track item.Curso.PRO_NOMBRE){
+            @for(item of cursos.slice(0,cantidadItems); track item.Curso.PRO_NOMBRE)
+            {
             <div class="col-4">
                 <div class="card productos-destacados">
                     @if (!item.CUR_IMAGEN_1) {
@@ -19,8 +20,8 @@
                         <a routerLink="/cursos/{{item.PRO_ID}}" class="btn btn-primary">Ver detalle</a>
                     </div>
                 </div>
-            </div>
 
+            </div>
             }
         </div>
     </div>

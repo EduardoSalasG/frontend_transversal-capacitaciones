@@ -38,4 +38,6 @@ export class CarouselLeadsComponent {
     }
   ]
 
+  @Input() cantidadItems: any = 0;
+
 }
