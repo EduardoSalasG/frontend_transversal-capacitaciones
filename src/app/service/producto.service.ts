@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getCurso, getLead, getCategoriasCurso } from '../graphql-queries';
+import { getCurso, getLead, getCategoriasCurso, getCategoriasLeads } from '../graphql-queries';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -41,14 +41,30 @@ export class ProductoService {
       .then((response) => response.data.getLeadProductoById);
   }
 
-  getCategoriasCurso(id: number): Promise<any> {
+  getCategoriasCurso(): Promise<any> {
     const query = getCategoriasCurso;
 
     const url = `${this.endpoint}?query=${encodeURIComponent(query)}`;
     return this.http
       .get<any>(url)
       .toPromise()
-      .then((response) => response.data.getCategoriasCurso);
+      .then((response) => {
+        console.log(response.data.getCategoriasCurso)
+        return response.data.getCategoriasCurso
+      });
+  }
+
+  getCategoriasLeads(): Promise<any> {
+    const query = getCategoriasLeads;
+
+    const url = `${this.endpoint}?query=${encodeURIComponent(query)}`;
+    return this.http
+      .get<any>(url)
+      .toPromise()
+      .then((response) => {
+        console.log(response.data.getCategoriasLead)
+        return response.data.getCategoriasLead
+      });
   }
 
 

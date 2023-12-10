@@ -88,6 +88,20 @@ query GetCategoriasCurso {
 
   }
 }`
+
+export const getCategoriasLeads = `
+query GetCategoriasLead {
+  getCategoriasLead {
+        CLE_ID
+    CLE_NOMBRE
+
+    Subcategorias {
+      SLE_ID
+      SLE_NOMBRE
+    }
+  }
+}`
+
 export const getValoracionesQuery = `
 query GetValoraciones {
   getValoraciones {
