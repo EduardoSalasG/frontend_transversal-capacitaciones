@@ -63,6 +63,30 @@ export const routes: Routes = [
         ]
     },
     {
+        path: 'mis-productos',
+        loadComponent: () => import('./vendor/pages/layout-page/layout-page.component'),
+        children: [
+            {
+                path: 'create',
+                loadComponent: () => import('./vendor/pages/create-product/create-product.component'),
+            },
+            {
+                path: 'edit/:id',
+                loadComponent: () => import('./vendor/pages/edit-product/edit-product.component'),
+            },
+            {
+                path: 'list',
+                loadComponent: () => import('./vendor/pages/list-products/list-products.component'),
+            },
+            {
+                path: '',
+                redirectTo: 'list',
+                pathMatch: 'full'
+            },
+        ]
+    },
+
+    {
         path: 'checkout',
         title: "Checkout",
         loadComponent: () => import('./shared/pages/checkout/checkout.component')

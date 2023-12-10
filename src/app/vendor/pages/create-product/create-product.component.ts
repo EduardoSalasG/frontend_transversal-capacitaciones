@@ -8,6 +8,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './create-product.component.html',
   styleUrl: './create-product.component.css'
 })
-export class CreateProductComponent {
+export default class CreateProductComponent {
 
 }
