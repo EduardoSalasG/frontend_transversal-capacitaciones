@@ -22,11 +22,11 @@ export interface Subcategoria {
 })
 export class FilterCursosComponent {
   public subcategorias: Subcategoria[] = []
+  public defaultSubcategoriaSelected = ''
 
   @Input() title: String = ''
   @Input() categoriasArray: Categorias[] = []
 
-  public defaultSubcategoriaSelected = ''
 
   onSelected(value: any): void {
     (value) ? this.subcategorias = this.categoriasArray[value - 1].Subcategorias : this.subcategorias = []

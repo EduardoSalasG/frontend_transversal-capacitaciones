@@ -36,6 +36,8 @@ export default class CursosComponent implements OnInit {
   cursos: any[] = [];
   cantidadItems: any = 3
   public categoriasArray: Categorias[] = []
+  public subcategorias: Subcategoria[] = []
+  public defaultSubcategoriaSelected = ''
 
 
   constructor(
@@ -69,6 +71,18 @@ export default class CursosComponent implements OnInit {
 
     }, 3000)
 
+  }
+
+  onSelected(value: any): void {
+    (value) ? this.subcategorias = this.categoriasArray[value - 1].Subcategorias : this.subcategorias = []
+    console.log(this.categoriasArray)
+    console.log(this.subcategorias)
+    console.log(value)
+    this.setDefaultSubcategoriaAsSelected()
+  }
+
+  setDefaultSubcategoriaAsSelected(): void {
+    this.defaultSubcategoriaSelected = ''
   }
 
 
