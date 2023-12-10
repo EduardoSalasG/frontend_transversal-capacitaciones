@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterCursosComponent } from '../../../products/components/filter-cursos/filter-cursos.component';
+import { ProductoService } from '../../../service/producto.service';
 
 export interface Modalidad {
   MOD_ID: string;
@@ -34,7 +35,19 @@ export interface Subcategoria {
   templateUrl: './create-product.component.html',
   styleUrl: './create-product.component.css'
 })
-export default class CreateProductComponent {
+export default class CreateProductComponent implements OnInit {
+
+  constructor(
+    private productosService: ProductoService,
+  ) { }
+
+  ngOnInit(): void {
+    this.productosService.getCategoriasCurso().then((data) => {
+      this.categoriasArray = data;
+      console.log(this.categoriasArray)
+    })
+  }
+
 
   modalidades: Modalidad[] = [{
     "MOD_ID": "1",
@@ -66,78 +79,9 @@ export default class CreateProductComponent {
   }]
 
   //TODO: Arreglar subcategorias con su id {nombre: String, id: number}
-  public categoriasArray: Categorias[] = [
-    {
-      "CCU_ID": "1",
-      "CCU_NOMBRE": "Administración Pública",
-      "Subcategorias": [
-        {
-          "SCU_ID": "1",
-          "SCU_NOMBRE": "Cuerpos de Seguridad"
-        },
-        {
-          "SCU_ID": "2",
-          "SCU_NOMBRE": "Fuerzas Armadas de Orden y Seguridad"
-        }
-      ]
-    },
-    {
-      "CCU_ID": "2",
-      "CCU_NOMBRE": "Arquitectura",
-      "Subcategorias": [
-        {
-          "SCU_ID": "3",
-          "SCU_NOMBRE": "Arquitectura y Proyección"
-        },
-        {
-          "SCU_ID": "4",
-          "SCU_NOMBRE": "Construcción y Obras Públicas"
-        }
-      ]
-    },
-    {
-      "CCU_ID": "3",
-      "CCU_NOMBRE": "Inmobiliaria y Construcción",
-      "Subcategorias": [
-        {
-          "SCU_ID": "5",
-          "SCU_NOMBRE": "Diseño de interiores"
-        },
-        {
-          "SCU_ID": "6",
-          "SCU_NOMBRE": "Oficios de la Construcción"
-        }
-      ]
-    },
-    {
-      "CCU_ID": "4",
-      "CCU_NOMBRE": "Ciencias",
-      "Subcategorias": [
-        {
-          "SCU_ID": "8",
-          "SCU_NOMBRE": "Física"
-        },
-        {
-          "SCU_ID": "9",
-          "SCU_NOMBRE": "Biología y Biotecnología"
-        }
-      ]
-    },
-    {
-      "CCU_ID": "5",
-      "CCU_NOMBRE": "Creación y Diseño",
-      "Subcategorias": [
-        {
-          "SCU_ID": "7",
-          "SCU_NOMBRE": "Artes Plásticas"
-        }
-      ]
-    }
-  ]
-
-  public subcategorias: String[] = []
-
-  public title: any = 'Categorías y subcategorías'
+  public categoriasArray: Categorias[] = []
+  public subcategorias: Subcategoria[] = []
+  public defaultSubcategoriaSelected = ''
 
   crearProductoForm = new FormGroup({
     PRO_NOMBRE: new FormControl(''),
@@ -169,6 +113,18 @@ export default class CreateProductComponent {
 
   public myModal: any = document.getElementById('productoCreadoModal')
   public myInput: any = document.getElementById('myInput')
+
+  onSelected(value: any): void {
+    (value) ? this.subcategorias = this.categoriasArray[value - 1].Subcategorias : this.subcategorias = []
+    console.log(this.categoriasArray)
+    console.log(this.subcategorias)
+    console.log(value)
+    this.setDefaultSubcategoriaAsSelected()
+  }
+
+  setDefaultSubcategoriaAsSelected(): void {
+    this.defaultSubcategoriaSelected = ''
+  }
 
 
 

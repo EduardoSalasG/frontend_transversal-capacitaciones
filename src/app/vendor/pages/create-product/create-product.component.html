@@ -72,18 +72,36 @@
 
                         <!-- TODO: Subcategorías -->
 
-                        <div class="col-12">
-                            <label for="TDU_ID" class="form-label mt-3">Categorías y subcategorías</label>
-                            <select class="form-select" id="TDU_ID" required formControlName="TDU_ID">
-                                <option value="" disabled>Escoger...</option>
-                                @for (tipoDeDuracion of tiposDeDuracion; track $index) {
-                                <option value="{{tipoDeDuracion.TDU_ID}}">{{tipoDeDuracion.TDU_NOMBRE}}
-                                </option>
-                                }
-                            </select>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="categoria" class="form-label mt-3">Categoría</label>
+                                <select #categoria class="form-select" id="categoria" required
+                                    (change)="onSelected(categoria.selectedIndex)">
+                                    <option value="">Escoger...</option>
+                                    @for (categoria of categoriasArray; track $index) {
+                                    <option value="{{categoria.CCU_ID}}">{{categoria.CCU_NOMBRE}}
+                                    </option>
+                                    }
+                                </select>
 
-                            <div class="invalid-feedback">
-                                Por favor, seleccione un tipo de duración válido.
+                                <div class="invalid-feedback">
+                                    Por favor, seleccione una categoría válida.
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="SCU_ID" class="form-label mt-3">Subcategoría</label>
+                                <select class="form-select" id="region" required formControlName="SCU_ID"
+                                    [(ngModel)]="defaultSubcategoriaSelected">
+                                    <option value="">Escoger...</option>
+                                    @for (subcategoria of subcategorias; track $index) {
+                                    <option value="{{subcategoria.SCU_ID}}">{{subcategoria.SCU_NOMBRE}}</option>
+                                    }
+                                </select>
+
+                                <div class="invalid-feedback">
+                                    Por favor, seleccione una subcategoría válida.
+                                </div>
                             </div>
                         </div>
 

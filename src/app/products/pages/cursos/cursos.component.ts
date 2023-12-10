@@ -35,80 +35,16 @@ export interface Subcategoria {
 export default class CursosComponent implements OnInit {
   cursos: any[] = [];
   cantidadItems: any = 3
-
-  private productosService = Inject(ProductoService)
-
-  public categoriasArray: Categorias[] = [
-    {
-      "CCU_ID": "1",
-      "CCU_NOMBRE": "Administración Pública",
-      "Subcategorias": [
-        {
-          "SCU_ID": "1",
-          "SCU_NOMBRE": "Cuerpos de Seguridad"
-        },
-        {
-          "SCU_ID": "2",
-          "SCU_NOMBRE": "Fuerzas Armadas de Orden y Seguridad"
-        }
-      ]
-    },
-    {
-      "CCU_ID": "2",
-      "CCU_NOMBRE": "Arquitectura",
-      "Subcategorias": [
-        {
-          "SCU_ID": "3",
-          "SCU_NOMBRE": "Arquitectura y Proyección"
-        },
-        {
-          "SCU_ID": "4",
-          "SCU_NOMBRE": "Construcción y Obras Públicas"
-        }
-      ]
-    },
-    {
-      "CCU_ID": "3",
-      "CCU_NOMBRE": "Inmobiliaria y Construcción",
-      "Subcategorias": [
-        {
-          "SCU_ID": "5",
-          "SCU_NOMBRE": "Diseño de interiores"
-        },
-        {
-          "SCU_ID": "6",
-          "SCU_NOMBRE": "Oficios de la Construcción"
-        }
-      ]
-    },
-    {
-      "CCU_ID": "4",
-      "CCU_NOMBRE": "Ciencias",
-      "Subcategorias": [
-        {
-          "SCU_ID": "8",
-          "SCU_NOMBRE": "Física"
-        },
-        {
-          "SCU_ID": "9",
-          "SCU_NOMBRE": "Biología y Biotecnología"
-        }
-      ]
-    },
-    {
-      "CCU_ID": "5",
-      "CCU_NOMBRE": "Creación y Diseño",
-      "Subcategorias": [
-        {
-          "SCU_ID": "7",
-          "SCU_NOMBRE": "Artes Plásticas"
-        }
-      ]
-    }
-  ]
+  public categoriasArray: Categorias[] = []
+  public subcategorias: Subcategoria[] = []
+  public defaultSubcategoriaSelected = ''
 
 
-  constructor(private router: Router, private cursoService: CursoService) {
+  constructor(
+    private router: Router,
+    private cursoService: CursoService,
+    private productosService: ProductoService,
+  ) {
 
   }
   private activatedRoute = inject(ActivatedRoute)
@@ -117,15 +53,16 @@ export default class CursosComponent implements OnInit {
   productoId = 0;
 
 
-  ngOnInit(): void {
-    // this.productosService.getCategoriasCurso()
-    //   .then((data: any) => {
-    //     this.categoriasArray = data.getCategoriasCurso;
-    //     console.log(this.categoriasArray)
-    //   })
-    // this.activatedRoute.params.subscribe(params => {
-    //   this.productoId = params["id"]
-    // })
+  ngOnInit() {
+
+    this.productosService.getCategoriasCurso().then((data) => {
+      this.categoriasArray = data;
+      console.log(this.categoriasArray)
+    })
+
+    this.activatedRoute.params.subscribe(params => {
+      this.productoId = params["id"]
+    })
 
     setTimeout(() => {
       this.cursoService.result.then((data: any) => {
@@ -134,6 +71,18 @@ export default class CursosComponent implements OnInit {
 
     }, 3000)
 
+  }
+
+  onSelected(value: any): void {
+    (value) ? this.subcategorias = this.categoriasArray[value - 1].Subcategorias : this.subcategorias = []
+    console.log(this.categoriasArray)
+    console.log(this.subcategorias)
+    console.log(value)
+    this.setDefaultSubcategoriaAsSelected()
+  }
+
+  setDefaultSubcategoriaAsSelected(): void {
+    this.defaultSubcategoriaSelected = ''
   }
 
 

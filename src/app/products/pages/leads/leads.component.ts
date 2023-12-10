@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { LeadService } from '../../../service/lead.service';
 import { CarouselLeadsComponent } from '../../components/carousel-leads/carousel-leads.component';
 import { CardsLeadsComponent } from '../../components/cards-leads/cards-leads.component';
+import { ProductoService } from '../../../service/producto.service';
 
 
 export interface Categorias {
@@ -33,45 +34,22 @@ export default class LeadsComponent implements OnInit {
   leads: any[] = [];
   cantidadItems: any = 3
 
-  public categoriasArray: Categorias[] = [
-    {
-      "CLE_ID": "1",
-      "CLE_NOMBRE": "Administración pública",
-      "Subcategorias": [
-        {
-          "SLE_ID": "1",
-          "SLE_NOMBRE": "Administración pública"
-        }
-      ]
-    },
-    {
-      "CLE_ID": "2",
-      "CLE_NOMBRE": "Arquitectura, inmobiliaria y construcción",
-      "Subcategorias": [
-        {
-          "SLE_ID": "2",
-          "SLE_NOMBRE": "Cuerpos de seguridad"
-        }
-      ]
-    },
-    {
-      "CLE_ID": "3",
-      "CLE_NOMBRE": "Calidad, producción, investigación y desarrollo",
-      "Subcategorias": [
-        {
-          "SLE_ID": "3",
-          "SLE_NOMBRE": "Fuerzas"
-        }
-      ]
-    }
-  ]
-  constructor(private leadService: LeadService) { }
+  public categoriasArray: Categorias[] = []
+  constructor(
+    private leadService: LeadService,
+    private productoService: ProductoService,) { }
 
   title = 'Todos los leads'
   ngOnInit(): void {
     // this.activatedRoute.params.subscribe(params => {
     //   this.productoId = params["id"]
     // })
+
+    this.productoService.getCategoriasLeads().then((data) => {
+      this.categoriasArray = data;
+      console.log(this.categoriasArray)
+    })
+
 
     setTimeout(() => {
       this.leadService.result.then((data: any) => {
