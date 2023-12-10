@@ -52,6 +52,7 @@ query GetCursoProductoById($proId: ID) {
     CUR_CODIGO_SENCE
     CUR_DURACION
     CUR_INCLUYE_CERTIFICACION
+    CUR_IMAGEN_1
     Modalidad {
       MOD_NOMBRE
     }
@@ -72,6 +73,20 @@ export const getLead = `
 query GetLeadProductoById($proId: ID) {
   getLeadProductoById(PRO_ID: $proId) {
     PRO_ID
+    Lead {
+      PRO_NOMBRE
+      PRO_DESCRIPCION
+      PRO_DESCRIPCION_CORTA
+      PRO_PRECIO
+      PRO_PRECIO_DESCUENTO
+    }
+    LEA_URL_DIR
+    SubcategoriaLead {
+      SLE_NOMBRE
+      CategoriaLead {
+        CLE_NOMBRE
+      }
+    }
   }
 }
 `

@@ -22,6 +22,7 @@ interface ObjectCurso {
   CUR_CODIGO_SENCE: String
   CUR_DURACION: Number
   CUR_INCLUYE_CERTIFICACION: Boolean
+  CUR_IMAGEN_1: String
   Modalidad: {
     MOD_NOMBRE: String
   }
@@ -33,6 +34,24 @@ interface ObjectCurso {
   }
   TipoDeDuracion: {
     TDU_NOMBRE: String
+  }
+}
+
+interface ObjectLead {
+  PRO_ID: Number
+  Lead: {
+    PRO_NOMBRE: String
+    PRO_DESCRIPCION: String
+    PRO_DESCRIPCION_CORTA: String
+    PRO_PRECIO: any
+    PRO_PRECIO_DESCUENTO: any
+  }
+  LEA_URL_DIR: String
+  SubcategoriaLead: {
+    SLE_NOMBRE: String
+    CategoriaLead: {
+      CLE_NOMBRE: String
+    }
   }
 }
 
@@ -66,6 +85,7 @@ export default class ProductComponent implements OnInit {
     CUR_CODIGO_SENCE: "",
     CUR_DURACION: 0,
     CUR_INCLUYE_CERTIFICACION: false,
+    CUR_IMAGEN_1: "",
     Modalidad: {
       MOD_NOMBRE: "",
     },
@@ -79,7 +99,23 @@ export default class ProductComponent implements OnInit {
       TDU_NOMBRE: "",
     }
   };
-  lead: any = {};
+  @Input() lead: ObjectLead = {
+    PRO_ID: 0,
+    Lead: {
+      PRO_NOMBRE: "",
+      PRO_DESCRIPCION: "",
+      PRO_DESCRIPCION_CORTA: "",
+      PRO_PRECIO: 0,
+      PRO_PRECIO_DESCUENTO: 0,
+    },
+    LEA_URL_DIR: "",
+    SubcategoriaLead: {
+      SLE_NOMBRE: "",
+      CategoriaLead: {
+        CLE_NOMBRE: ""
+      }
+    }
+  };
 
   // @Input() lead: ObjectCurso = {
 
@@ -94,6 +130,17 @@ export default class ProductComponent implements OnInit {
       nombre: this.curso.Curso.PRO_NOMBRE,
       precio: this.curso.Curso.PRO_PRECIO,
       descripcion: this.curso.Curso.PRO_DESCRIPCION,
+    }
+
+    this.productoService.setProductoInfo(infoProducto)
+    this.router.navigate(['/checkout'])
+  }
+
+  comprarLead() {
+    const infoProducto = {
+      nombre: this.lead.Lead.PRO_NOMBRE,
+      precio: this.lead.Lead.PRO_PRECIO,
+      descripcion: this.lead.Lead.PRO_DESCRIPCION,
     }
 
     this.productoService.setProductoInfo(infoProducto)
