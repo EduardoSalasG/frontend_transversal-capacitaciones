@@ -34,7 +34,7 @@ export default class CursosComponent implements OnInit {
 
   }
   private activatedRoute = inject(ActivatedRoute)
-  title = "Cursos";
+  title = "Todos los cursos";
   producto = false;
   productoId = 0;
 

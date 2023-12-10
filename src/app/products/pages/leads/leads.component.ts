@@ -26,6 +26,6 @@ export default class LeadsComponent {
     }
   ]
 
-  title = 'Leads'
+  title = 'Todos los leads'
 
 }
