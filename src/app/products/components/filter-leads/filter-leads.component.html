@@ -1,0 +1,22 @@
+<section class="d-flex flex-row justify-content-center">
+    <h4>{{title}}</h4>
+
+
+
+    <select #categoria class=" form-select select mx-3" aria-label="Default select example"
+        (change)="onSelected(categoria.selectedIndex)">
+        <option selected>Todas las categorías...</option>
+        @for (categoria of categoriasArray; track $index) {
+        <option value="{{categoria.CLE_ID}}">{{categoria.CLE_NOMBRE}}
+        </option>
+        }
+    </select>
+
+    <select class="form-select select" [(ngModel)]="defaultSubcategoriaSelected" aria-label="Default select example">
+        <option value="">Todas las subcategorías...</option>
+        @for (subcategoria of subcategorias; track $index) {
+        <option value="{{subcategoria.SLE_ID}}">{{subcategoria.SLE_NOMBRE}}</option>
+        }
+    </select>
+
+</section>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FilterComponent } from '../../../products/components/filter/filter.component';
+import { FilterCursosComponent } from '../../../products/components/filter-cursos/filter-cursos.component';
 
 export interface Modalidad {
   MOD_ID: string;
@@ -15,16 +15,22 @@ export interface TipoDeDuracion {
   TDU_DESCRIPCION: string;
 }
 
-interface categorias {
-  nombre: String,
-  subcategorias: String[]
+export interface Categorias {
+  CCU_ID: string;
+  CCU_NOMBRE: string;
+  Subcategorias: Subcategoria[];
+}
+
+export interface Subcategoria {
+  SCU_ID: string;
+  SCU_NOMBRE: string;
 }
 
 
 @Component({
   selector: 'app-create-product',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, FormsModule, ReactiveFormsModule, FilterComponent],
+  imports: [CommonModule, RouterLink, RouterLinkActive, FormsModule, ReactiveFormsModule, FilterCursosComponent],
   templateUrl: './create-product.component.html',
   styleUrl: './create-product.component.css'
 })
@@ -60,16 +66,73 @@ export default class CreateProductComponent {
   }]
 
   //TODO: Arreglar subcategorias con su id {nombre: String, id: number}
-  public categoriasArray: categorias[] = [
+  public categoriasArray: Categorias[] = [
     {
-      nombre: 'Salud',
-      subcategorias: ['Primeros auxilios', 'Kinesiología', 'Instrumentación quirúrgica']
+      "CCU_ID": "1",
+      "CCU_NOMBRE": "Administración Pública",
+      "Subcategorias": [
+        {
+          "SCU_ID": "1",
+          "SCU_NOMBRE": "Cuerpos de Seguridad"
+        },
+        {
+          "SCU_ID": "2",
+          "SCU_NOMBRE": "Fuerzas Armadas de Orden y Seguridad"
+        }
+      ]
     },
     {
-      nombre: 'IT',
-      subcategorias: ['Programación', 'Excel', 'Business Intelligence']
+      "CCU_ID": "2",
+      "CCU_NOMBRE": "Arquitectura",
+      "Subcategorias": [
+        {
+          "SCU_ID": "3",
+          "SCU_NOMBRE": "Arquitectura y Proyección"
+        },
+        {
+          "SCU_ID": "4",
+          "SCU_NOMBRE": "Construcción y Obras Públicas"
+        }
+      ]
+    },
+    {
+      "CCU_ID": "3",
+      "CCU_NOMBRE": "Inmobiliaria y Construcción",
+      "Subcategorias": [
+        {
+          "SCU_ID": "5",
+          "SCU_NOMBRE": "Diseño de interiores"
+        },
+        {
+          "SCU_ID": "6",
+          "SCU_NOMBRE": "Oficios de la Construcción"
+        }
+      ]
+    },
+    {
+      "CCU_ID": "4",
+      "CCU_NOMBRE": "Ciencias",
+      "Subcategorias": [
+        {
+          "SCU_ID": "8",
+          "SCU_NOMBRE": "Física"
+        },
+        {
+          "SCU_ID": "9",
+          "SCU_NOMBRE": "Biología y Biotecnología"
+        }
+      ]
+    },
+    {
+      "CCU_ID": "5",
+      "CCU_NOMBRE": "Creación y Diseño",
+      "Subcategorias": [
+        {
+          "SCU_ID": "7",
+          "SCU_NOMBRE": "Artes Plásticas"
+        }
+      ]
     }
-
   ]
 
   public subcategorias: String[] = []

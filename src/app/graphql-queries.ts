@@ -75,3 +75,16 @@ query GetLeadProductoById($proId: ID) {
   }
 }
 `
+
+export const getCategoriasCurso = `
+query GetCategoriasCurso {
+  getCategoriasCurso {
+    CCU_ID
+    CCU_NOMBRE
+        Subcategorias {
+      SCU_ID
+      SCU_NOMBRE
+    }
+
+  }
+}`
