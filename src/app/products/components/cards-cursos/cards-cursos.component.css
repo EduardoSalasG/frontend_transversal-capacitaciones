@@ -2,9 +2,18 @@
     font-family: Poppins;
 }
 
+.cards-section .img-box {
+    height: 47%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
 .cards-section .cursos-productos {
     height: 400px;
     width: 24rem;
+    border-radius: 13px;
 }
 
 .cards-section .card-title {
@@ -28,4 +37,10 @@
 
 .cursos-productos {
     height: 500px;
+}
+
+.card-footer .ver-detalle {
+    font-size: 14px;
+    font-weight: 600;
+
 }

@@ -5,8 +5,9 @@
             {
             <div class="col-4">
                 <div class="card productos-destacados">
-                    @if (!item.CUR_IMAGEN_1) {
-                    <img src="{{item.CUR_IMAGEN_1}}" class="card-img-top" alt="...">
+                    @if (item.CUR_IMAGEN_1) {
+                    <div class="img-box" style="background-image: url({{item.CUR_IMAGEN_1}});">
+                    </div>
                     }@else{
                     <img src="https://redcapacitacion.cl/datos/img-etiquetas/32.jpg" class="card-img-top" alt="...">
                     }
@@ -17,7 +18,7 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between align-items-center">
                         <p class="card-text m-0">{{item.Curso.PRO_PRECIO| currency:'CLP'}}</p>
-                        <a routerLink="/cursos/{{item.PRO_ID}}" class="btn btn-primary">Ver detalle</a>
+                        <a routerLink="/cursos/{{item.PRO_ID}}" class="ver-detalle">Ver detalle</a>
                     </div>
                 </div>
 

@@ -7,6 +7,15 @@
     width: 24rem;
 }
 
+.cards-section .img-box {
+    background-image: url('https://images.unsplash.com/photo-1529078155058-5d716f45d604?q=80&w=2768&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    height: 47%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
 .cards-section .card-title {
     font-size: 20px;
     text-transform: capitalize;
@@ -26,6 +35,13 @@
     color: #212529;
 }
 
-.leads-productos {
-    height: 500px;
+.card-footer .ver-detalle {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.cards-section .leads-productos {
+    height: 400px;
+    width: 24rem;
+    border-radius: 12px;
 }

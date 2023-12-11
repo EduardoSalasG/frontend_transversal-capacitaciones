@@ -4,7 +4,8 @@
             @for(item of leads.slice(0,cantidadItems); track item.Lead.PRO_NOMBRE){
             <div class="col-4">
                 <div class="card productos-destacados">
-                    <img src="https://redcapacitacion.cl/datos/img-etiquetas/32.jpg" class="card-img-top" alt="...">
+                    <div class="img-box">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{item.Lead.PRO_NOMBRE}}</h5>
                         <p class="card-text subcategoria">{{item.SubcategoriaLead.SLE_NOMBRE}}</p>
@@ -12,7 +13,7 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between align-items-center">
                         <p class="card-text m-0">{{item.Lead.PRO_PRECIO| currency:'CLP'}}</p>
-                        <a routerLink="/leads/{{item.PRO_ID}}" class="btn btn-primary">Ver detalle</a>
+                        <a routerLink="/leads/{{item.PRO_ID}}" class="ver-detalle">Ver detalle</a>
                     </div>
                 </div>
             </div>

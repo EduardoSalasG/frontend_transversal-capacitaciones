@@ -29,3 +29,22 @@
 .productos-destacados-carrusel {
     height: 500px;
 }
+
+.carusel-section .img-box {
+    height: 47%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+.carusel-section .productos-destacados {
+    height: 400px;
+    width: 24rem;
+    border-radius: 13px;
+}
+
+.card-footer .ver-detalle {
+    font-weight: 600;
+    font-size: 14px;
+}
