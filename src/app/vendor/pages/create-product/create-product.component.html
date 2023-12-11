@@ -16,262 +16,268 @@
 </div>
 
 <section>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="m-4">Crear curso</h2>
-                <hr>
-                <div class="py-1 text-center">
-                    <p class="lead">Ingrese detalladamente toda la información del nuevo curso
-                    </p>
-                    <hr>
+    <div class="container new-product">
+        <div class="row justify-content-center">
+            <div class="col-8">
+
+
+                <div class="col-12">
+                    <div class="pt-5 text-center">
+                        <img class="d-block mx-auto mb-4"
+                            src="https://www.transversal-otec.cl/wp-content/uploads/2022/03/logo-transversal-e1686778917240.jpg"
+                            alt="" width="105" height="57">
+                        <h2 class="new-product-title">Crear curso</h2>
+                        <p class="lead new-product-subtitle">Ingrese detalladamente toda la información del nuevo curso
+                        </p>
+                    </div>
+
                 </div>
-            </div>
-            <div class="col-12">
+                <div class="col-12">
 
-                <div class="row g-5">
+                    <div class="row g-5">
 
-                    <form class="needs-validation" novalidate [formGroup]="crearProductoForm" (ngSubmit)="onSubmit()">
+                        <form class="needs-validation" novalidate [formGroup]="crearProductoForm"
+                            (ngSubmit)="onSubmit()">
 
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="MOD_ID" class="form-label mt-3">Modalidad</label>
-                                <select class="form-select" id="region" required formControlName="MOD_ID">
-                                    <option value="" disabled>Escoger...</option>
-                                    @for (modalidad of modalidades; track $index) {
-                                    <option value="{{modalidad.MOD_ID}}">{{modalidad.MOD_NOMBRE}}
-                                    </option>
-                                    }
-                                </select>
-
+                            <div class="col-12">
+                                <label for="rut" class="form-label mt-3">Nombre</label>
+                                <input type="text" class="form-control" id="PRO_NOMBRE" placeholder="" required
+                                    formControlName="PRO_NOMBRE">
                                 <div class="invalid-feedback">
-                                    Por favor, seleccione una modalidad válida.
+                                    Por favor, ingrese el nombre del curso.
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <label for="CUR_DIRIGIDO_A" class="form-label mt-3">Dirigido a </label>
-                                <input type="text" class="form-control" id="CUR_DIRIGIDO_A" required
-                                    formControlName="CUR_DIRIGIDO_A">
+                            <div class="col-12">
+                                <label for="rut" class="form-label mt-3">Descripción corta</label>
+                                <input type="text" class="form-control" id="PRO_DESCRIPCION_CORTA" placeholder=""
+                                    required formControlName="PRO_DESCRIPCION_CORTA">
                                 <div class="invalid-feedback">
-                                    Por favor, ingrese el público objetivo.
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="col-12">
-                            <label for="rut" class="form-label mt-3">Nombre</label>
-                            <input type="text" class="form-control" id="PRO_NOMBRE" placeholder="" required
-                                formControlName="PRO_NOMBRE">
-                            <div class="invalid-feedback">
-                                Por favor, ingrese el nombre del curso.
-                            </div>
-                        </div>
-
-                        <!-- TODO: Subcategorías -->
-
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="categoria" class="form-label mt-3">Categoría</label>
-                                <select #categoria class="form-select" id="categoria" required
-                                    (change)="onSelected(categoria.selectedIndex)">
-                                    <option value="">Escoger...</option>
-                                    @for (categoria of categoriasArray; track $index) {
-                                    <option value="{{categoria.CCU_ID}}">{{categoria.CCU_NOMBRE}}
-                                    </option>
-                                    }
-                                </select>
-
-                                <div class="invalid-feedback">
-                                    Por favor, seleccione una categoría válida.
+                                    Por favor, ingrese una descripción corta.
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <label for="SCU_ID" class="form-label mt-3">Subcategoría</label>
-                                <select class="form-select" id="region" required formControlName="SCU_ID"
-                                    [(ngModel)]="defaultSubcategoriaSelected">
-                                    <option value="">Escoger...</option>
-                                    @for (subcategoria of subcategorias; track $index) {
-                                    <option value="{{subcategoria.SCU_ID}}">{{subcategoria.SCU_NOMBRE}}</option>
-                                    }
-                                </select>
-
-                                <div class="invalid-feedback">
-                                    Por favor, seleccione una subcategoría válida.
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-                        <div class="col-12">
-                            <label for="rut" class="form-label mt-3">Descripción corta</label>
-                            <input type="text" class="form-control" id="PRO_DESCRIPCION_CORTA" placeholder="" required
-                                formControlName="PRO_DESCRIPCION_CORTA">
-                            <div class="invalid-feedback">
-                                Por favor, ingrese una descripción corta.
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="rut" class="form-label mt-3">Descripción</label>
-                            <textarea type="text" class="form-control" id="PRO_DESCRIPCION" placeholder="" required
-                                formControlName="PRO_DESCRIPCION" rows="5"></textarea>
-                            <div class="invalid-feedback">
-                                Por favor, ingrese una descripción.
-                            </div>
-                        </div>
-
-                        <div class="row g-3">
-                            <div class="col-sm-6">
-                                <label for="PRO_PRECIO" class="form-label mt-3">Precio</label>
-                                <input type="number" class="form-control" id="PRO_PRECIO" placeholder="" value=""
-                                    required formControlName="PRO_PRECIO">
-                                <div class="invalid-feedback">
-                                    Por favor, ingrese un precio.
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <label for="PRO_PRECIO_DESCUENTO" class="form-label mt-3">Precio de descuento
-                                    (Opcional)</label>
-                                <input type="number" class="form-control" id="PRO_PRECIO_DESCUENTO" placeholder=""
-                                    value="" formControlName="PRO_PRECIO_DESCUENTO">
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="CUR_OBJETIVOS" class="form-label mt-3">Objetivos</label>
-                            <textarea type="text" class="form-control" id="CUR_OBJETIVOS" placeholder="" required
-                                formControlName="CUR_OBJETIVOS" rows="5"></textarea>
-                            <div class="invalid-feedback">
-                                Por favor, ingrese los objetivos del curso.
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="CUR_ESTRUCTURA" class="form-label mt-3">Estructura</label>
-                            <textarea type="text" class="form-control" id="CUR_ESTRUCTURA" placeholder="" required
-                                formControlName="CUR_ESTRUCTURA" rows="5"></textarea>
-                            <div class="invalid-feedback">
-                                Por favor, ingrese la estructura del curso.
-                            </div>
-                        </div>
-
-                        <div class="row g-3">
-                            <div class="col-sm-6">
-                                <label for="CUR_IMAGEN_1" class="form-label mt-3">Imagen</label>
-                                <input type="file" accept=".jpg, .png, .jpeg, .webp" class="form-control"
-                                    id="CUR_IMAGEN_1" placeholder="" required formControlName="CUR_IMAGEN_1" rows="5">
+                            <div class="col-12">
+                                <label for="rut" class="form-label mt-3">Descripción</label>
+                                <textarea type="text" class="form-control" id="PRO_DESCRIPCION" placeholder="" required
+                                    formControlName="PRO_DESCRIPCION" rows="5"></textarea>
                                 <div class="invalid-feedback">
                                     Por favor, ingrese una descripción.
                                 </div>
                             </div>
+                            <hr class="my-4">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="MOD_ID" class="form-label mt-3">Modalidad</label>
+                                    <select class="form-select" id="region" required formControlName="MOD_ID">
+                                        <option value="" disabled>Escoger...</option>
+                                        @for (modalidad of modalidades; track $index) {
+                                        <option value="{{modalidad.MOD_ID}}">{{modalidad.MOD_NOMBRE}}
+                                        </option>
+                                        }
+                                    </select>
 
-                            <div class="col-sm-6">
-                                <label for="CUR_VIDEO_PROMOCIONAL" class="form-label mt-3">URL del video
-                                    promocional</label>
-                                <input type="url" class="form-control" id="CUR_VIDEO_PROMOCIONAL" placeholder=""
-                                    formControlName="CUR_VIDEO_PROMOCIONAL">
-                            </div>
-                        </div>
+                                    <div class="invalid-feedback">
+                                        Por favor, seleccione una modalidad válida.
+                                    </div>
+                                </div>
 
-                        <div class="row g-3">
-                            <div class="col-sm-6">
-                                <label for="CUR_CANTIDAD_MIN_PARTICIPANTES" class="form-label mt-3">Cantidad mínima de
-                                    participantes</label>
-                                <input type="number" class="form-control" id="CUR_CANTIDAD_MIN_PARTICIPANTES"
-                                    placeholder="" value="" required formControlName="CUR_CANTIDAD_MIN_PARTICIPANTES">
-                                <div class="invalid-feedback">
-                                    Por favor, ingrese un precio.
+                                <div class="col-md-6">
+                                    <label for="CUR_DIRIGIDO_A" class="form-label mt-3">Dirigido a </label>
+                                    <input type="text" class="form-control" id="CUR_DIRIGIDO_A" required
+                                        formControlName="CUR_DIRIGIDO_A">
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese el público objetivo.
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
-                                <label for="CUR_CANTIDAD_MAX_PARTICIPANTES" class="form-label mt-3">Cantidad máxima de
-                                    participantes</label>
-                                <input type="number" class="form-control" id="CUR_CANTIDAD_MAX_PARTICIPANTES"
-                                    placeholder="" value="" formControlName="CUR_CANTIDAD_MAX_PARTICIPANTES">
-                            </div>
-                        </div>
+                            <!-- TODO: Subcategorías -->
 
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <label for="TDU_ID" class="form-label mt-3">Tipo de duración</label>
-                                <select class="form-select" id="TDU_ID" required formControlName="TDU_ID">
-                                    <option value="" disabled>Escoger...</option>
-                                    @for (tipoDeDuracion of tiposDeDuracion; track $index) {
-                                    <option value="{{tipoDeDuracion.TDU_ID}}">{{tipoDeDuracion.TDU_NOMBRE}}
-                                    </option>
-                                    }
-                                </select>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="categoria" class="form-label mt-3">Categoría</label>
+                                    <select #categoria class="form-select" id="categoria" required
+                                        (change)="onSelected(categoria.selectedIndex)">
+                                        <option value="">Escoger...</option>
+                                        @for (categoria of categoriasArray; track $index) {
+                                        <option value="{{categoria.CCU_ID}}">{{categoria.CCU_NOMBRE}}
+                                        </option>
+                                        }
+                                    </select>
 
-                                <div class="invalid-feedback">
-                                    Por favor, seleccione un tipo de duración válido.
+                                    <div class="invalid-feedback">
+                                        Por favor, seleccione una categoría válida.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="SCU_ID" class="form-label mt-3">Subcategoría</label>
+                                    <select class="form-select" id="region" required formControlName="SCU_ID"
+                                        [(ngModel)]="defaultSubcategoriaSelected">
+                                        <option value="">Escoger...</option>
+                                        @for (subcategoria of subcategorias; track $index) {
+                                        <option value="{{subcategoria.SCU_ID}}">{{subcategoria.SCU_NOMBRE}}</option>
+                                        }
+                                    </select>
+
+                                    <div class="invalid-feedback">
+                                        Por favor, seleccione una subcategoría válida.
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="CUR_DURACION" class="form-label mt-3">Duración</label>
-                                <input type="number" class="form-control" id="CUR_DURACION" placeholder="" required
-                                    formControlName="CUR_DURACION">
-                                <div class="invalid-feedback">
-                                    Por favor, ingrese la duración.
+
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label for="PRO_PRECIO" class="form-label mt-3">Precio</label>
+                                    <input type="number" class="form-control" id="PRO_PRECIO" placeholder="" value=""
+                                        required formControlName="PRO_PRECIO">
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese un precio.
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="PRO_PRECIO_DESCUENTO" class="form-label mt-3">Precio de descuento
+                                        (Opcional)</label>
+                                    <input type="number" class="form-control" id="PRO_PRECIO_DESCUENTO" placeholder=""
+                                        value="" formControlName="PRO_PRECIO_DESCUENTO">
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="CUR_FECHA_INICIO" class="form-label mt-3">Fecha de inicio</label>
-                                <input type="date" class="form-control" id="CUR_FECHA_INICIO" placeholder="" required
-                                    formControlName="CUR_FECHA_INICIO">
+                            <div class="col-12">
+                                <label for="CUR_OBJETIVOS" class="form-label mt-3">Objetivos</label>
+                                <textarea type="text" class="form-control" id="CUR_OBJETIVOS" placeholder="" required
+                                    formControlName="CUR_OBJETIVOS" rows="5"></textarea>
                                 <div class="invalid-feedback">
-                                    Por favor, ingrese la fecha de inicio.
+                                    Por favor, ingrese los objetivos del curso.
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="CUR_CODIGO_SENCE" class="form-label mt-3">Código SENCE</label>
-                                <input type="text" class="form-control" id="CUR_CODIGO_SENCE" placeholder="" required
-                                    formControlName="CUR_CODIGO_SENCE">
+                            <div class="col-12">
+                                <label for="CUR_ESTRUCTURA" class="form-label mt-3">Estructura</label>
+                                <textarea type="text" class="form-control" id="CUR_ESTRUCTURA" placeholder="" required
+                                    formControlName="CUR_ESTRUCTURA" rows="5"></textarea>
                                 <div class="invalid-feedback">
-                                    Por favor, ingrese el código SENCE.
+                                    Por favor, ingrese la estructura del curso.
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="CUR_INCLUYE_CERTIFICACION" class="form-label mt-3">Incluye
-                                    certificación</label>
-                                <select class="form-select" id="CUR_INCLUYE_CERTIFICACION" required
-                                    formControlName="CUR_INCLUYE_CERTIFICACION">
-                                    <option value="" disabled>Escoger...</option>
-                                    <option value="1">Sí
-                                    </option>
-                                    <option value="0">No
-                                    </option>
-                                </select>
 
-                                <div class="invalid-feedback">
-                                    Por favor, seleccione un tipo de duración válido.
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label for="CUR_IMAGEN_1" class="form-label mt-3">Imagen</label>
+                                    <input type="file" accept=".jpg, .png, .jpeg, .webp" class="form-control"
+                                        id="CUR_IMAGEN_1" placeholder="" required formControlName="CUR_IMAGEN_1"
+                                        rows="5">
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese una descripción.
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="CUR_VIDEO_PROMOCIONAL" class="form-label mt-3">URL del video
+                                        promocional</label>
+                                    <input type="url" class="form-control" id="CUR_VIDEO_PROMOCIONAL" placeholder=""
+                                        formControlName="CUR_VIDEO_PROMOCIONAL">
                                 </div>
                             </div>
-                        </div>
 
-                        <button class="w-100 btn btn-primary btn-lg mt-5 mb-2" type="submit" data-bs-toggle="modal"
-                            data-bs-target="#productoCreadoModal">Crear
-                            curso</button>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label for="CUR_CANTIDAD_MIN_PARTICIPANTES" class="form-label mt-3">Cantidad mínima
+                                        de
+                                        participantes</label>
+                                    <input type="number" class="form-control" id="CUR_CANTIDAD_MIN_PARTICIPANTES"
+                                        placeholder="" value="" required
+                                        formControlName="CUR_CANTIDAD_MIN_PARTICIPANTES">
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese un precio.
+                                    </div>
+                                </div>
 
-                        <div class="w-100 mb-1">
-                            <a routerLink="/mis-productos">Volver atrás</a>
-                        </div>
-                    </form>
+                                <div class="col-sm-6">
+                                    <label for="CUR_CANTIDAD_MAX_PARTICIPANTES" class="form-label mt-3">Cantidad máxima
+                                        de
+                                        participantes</label>
+                                    <input type="number" class="form-control" id="CUR_CANTIDAD_MAX_PARTICIPANTES"
+                                        placeholder="" value="" formControlName="CUR_CANTIDAD_MAX_PARTICIPANTES">
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="TDU_ID" class="form-label mt-3">Tipo de duración</label>
+                                    <select class="form-select" id="TDU_ID" required formControlName="TDU_ID">
+                                        <option value="" disabled>Escoger...</option>
+                                        @for (tipoDeDuracion of tiposDeDuracion; track $index) {
+                                        <option value="{{tipoDeDuracion.TDU_ID}}">{{tipoDeDuracion.TDU_NOMBRE}}
+                                        </option>
+                                        }
+                                    </select>
+
+                                    <div class="invalid-feedback">
+                                        Por favor, seleccione un tipo de duración válido.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="CUR_DURACION" class="form-label mt-3">Duración</label>
+                                    <input type="number" class="form-control" id="CUR_DURACION" placeholder="" required
+                                        formControlName="CUR_DURACION">
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese la duración.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="CUR_FECHA_INICIO" class="form-label mt-3">Fecha de inicio</label>
+                                    <input type="date" class="form-control" id="CUR_FECHA_INICIO" placeholder=""
+                                        required formControlName="CUR_FECHA_INICIO">
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese la fecha de inicio.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="CUR_CODIGO_SENCE" class="form-label mt-3">Código SENCE</label>
+                                    <input type="text" class="form-control" id="CUR_CODIGO_SENCE" placeholder=""
+                                        required formControlName="CUR_CODIGO_SENCE">
+                                    <div class="invalid-feedback">
+                                        Por favor, ingrese el código SENCE.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="CUR_INCLUYE_CERTIFICACION" class="form-label mt-3">Incluye
+                                        certificación</label>
+                                    <select class="form-select" id="CUR_INCLUYE_CERTIFICACION" required
+                                        formControlName="CUR_INCLUYE_CERTIFICACION">
+                                        <option value="" disabled>Escoger...</option>
+                                        <option value="1">Sí
+                                        </option>
+                                        <option value="0">No
+                                        </option>
+                                    </select>
+
+                                    <div class="invalid-feedback">
+                                        Por favor, seleccione un tipo de duración válido.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="w-100 btn btn-primary btn-lg mt-5 mb-2" type="submit" data-bs-toggle="modal"
+                                data-bs-target="#productoCreadoModal">Crear
+                                curso</button>
+
+                            <div class="w-100 mb-1">
+                                <a routerLink="/mis-productos">Volver atrás</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-
         </div>
 
     </div>

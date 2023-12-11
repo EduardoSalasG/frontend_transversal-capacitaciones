@@ -24,7 +24,9 @@ interface DataCarrusel extends Array<ObjectCarrusel> {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 
-export class CarouselComponent {
+export class CarouselComponent implements OnInit {
+  public showContent = false;
+  placeholders: any[] = [1, 2, 3];
 
   @Input() cursos: DataCarrusel = [
     {
@@ -44,6 +46,9 @@ export class CarouselComponent {
 
   @Input() cantidadItems: any = 0;
   ngOnInit(): void {
+    setTimeout(() => {
+      this.showContent = true
+    }, 3500);
   }
 
 }

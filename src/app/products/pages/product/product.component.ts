@@ -64,7 +64,7 @@ interface ObjectLead {
   styleUrl: './product.component.css'
 })
 export default class ProductComponent implements OnInit {
-
+  public showContent = false;
   id: any = 0;
   isCurso: Boolean = true;
 
@@ -154,13 +154,18 @@ export default class ProductComponent implements OnInit {
           this.isCurso = true;
         } else {
           this.isCurso = false;
-          this.router.navigate(['/']); // Redirigir a la página de inicio
+
         }
       } catch (error) {
         console.error('Error al obtener curso o lead:', error);
         this.isCurso = false;
-        this.router.navigate(['/']); // Redirigir a la página de inicio
+        this.router.navigate(['/']);
       }
+
+      setTimeout(() => {
+        this.showContent = true
+      }, 3500);
+
     });
 
 

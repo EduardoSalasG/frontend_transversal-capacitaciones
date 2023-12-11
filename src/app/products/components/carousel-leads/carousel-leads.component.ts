@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 interface ObjectCarrusel {
@@ -22,7 +22,9 @@ interface DataCarrusel extends Array<ObjectCarrusel> {
   templateUrl: './carousel-leads.component.html',
   styleUrl: './carousel-leads.component.css'
 })
-export class CarouselLeadsComponent {
+export class CarouselLeadsComponent implements OnInit {
+  public showContent = false;
+  placeholders: any[] = [1, 2];
   @Input() leads: DataCarrusel = [
     {
       PRO_ID: 0,
@@ -39,5 +41,9 @@ export class CarouselLeadsComponent {
   ]
 
   @Input() cantidadItems: any = 0;
-
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.showContent = true
+    }, 3500);
+  }
 }

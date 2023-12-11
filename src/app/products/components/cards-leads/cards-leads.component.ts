@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -23,8 +23,9 @@ interface DataCard extends Array<ObjectCard> {
   templateUrl: './cards-leads.component.html',
   styleUrl: './cards-leads.component.css'
 })
-export class CardsLeadsComponent {
-
+export class CardsLeadsComponent implements OnInit {
+  public showContent = false;
+  placeholders: any[] = [1, 2];
   @Input() leads: DataCard = [
     {
       PRO_ID: 0,
@@ -39,4 +40,9 @@ export class CardsLeadsComponent {
       }
     }
   ]
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.showContent = true
+    }, 3500);
+  }
 }

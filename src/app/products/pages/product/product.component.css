@@ -12,11 +12,16 @@
     font-weight: 400;
 }
 
-.section-producto .imagen-curso {
-    width: 35rem;
-}
 
 .section-producto .imagen-curso img {
-    width: 35rem;
+    width: 28rem;
     border-radius: 10px;
+}
+
+.imagen-placeholder {
+    width: 28rem;
+    height: 15rem;
+    border-radius: 10px;
+    background-color: #edede9;
+    align-items: center;
 }

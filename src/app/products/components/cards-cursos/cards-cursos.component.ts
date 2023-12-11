@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 interface ObjectCard {
@@ -22,7 +22,9 @@ interface DataCard extends Array<ObjectCard> {
   templateUrl: './cards-cursos.component.html',
   styleUrl: './cards-cursos.component.css'
 })
-export class CardsCursosComponent {
+export class CardsCursosComponent implements OnInit {
+  public showContent = false;
+  placeholders: any[] = [1, 2, 3, 4, 5, 6];
   @Input() cursos: DataCard = [
     {
       Curso: {
@@ -39,5 +41,8 @@ export class CardsCursosComponent {
     }
   ]
   ngOnInit(): void {
+    setTimeout(() => {
+      this.showContent = true
+    }, 3500);
   }
 }
