@@ -85,7 +85,25 @@ export const routes: Routes = [
             },
         ]
     },
-
+    {
+        path: 'mis-compras',
+        loadComponent: () => import('./buyer/pages/layout-page/layout-page.component'),
+        children: [
+            {
+                path: 'list',
+                loadComponent: () => import('./buyer/pages/list-orders/list-orders.component'),
+            },
+            {
+                path: 'list/:id',
+                loadComponent: () => import('./buyer/pages/list-order/list-order.component'),
+            },
+            {
+                path: '',
+                redirectTo: 'list',
+                pathMatch: 'full'
+            },
+        ]
+    },
     {
         path: 'checkout',
         title: "Checkout",
