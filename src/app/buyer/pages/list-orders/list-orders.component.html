@@ -1,0 +1,36 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="m-5">Mis compras</h2>
+
+                <table class="table cell">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Tipo de producto</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        @for (curso of cursos; track $index ) {
+                        <tr class="vert">
+                            <th><a routerLink="/cursos/{{curso.PRO_ID}}"><i class="bi bi-eye"></i></a></th>
+                            <th scope="row">{{$index+1}}</th>
+                            <td>{{curso.Curso.PRO_NOMBRE}}</td>
+                            <td>{{curso.Curso.PRO_PRECIO| currency: 'CLP'}}</td>
+                            <td>{{curso.SubcategoriaCurso.CategoriaCurso.CCU_NOMBRE}}</td>
+                            <td>{{curso.SubcategoriaCurso.SCU_NOMBRE}}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</section>
