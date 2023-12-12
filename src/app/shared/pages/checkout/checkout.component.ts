@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../../../components/navbar/navbar.component';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductoService } from '../../../service/producto.service';
+import { MercadoPagoService } from '../../../service/mercado-pago.service';
 
 @Component({
   selector: 'app-checkout',
@@ -18,7 +19,7 @@ export default class CheckoutComponent {
 
   public infoProducto: any;
 
-  constructor(private productoService: ProductoService) {
+  constructor(private router: Router, private productoService: ProductoService, private mercadoPagoService: MercadoPagoService) {
     this.infoProducto = this.productoService.getCursoInfo();
   }
 
@@ -112,10 +113,74 @@ export default class CheckoutComponent {
     metodoDePago: new FormControl('')
   })
 
-  onSubmit() {
-    console.log(this.checkoutForm.value)
+  venMonto: any;
+  venRutDt: any
+  tdtId: any
+  usuId: any
+  proId: any
+  usuCorreo: any
+  proNombre: any
+
+  urlMercadoPago: any
+
+  async onSubmit() {
+
+    this.venMonto = this.infoProducto.precio
+    this.venRutDt = this.checkoutForm.value.rut
+    this.tdtId = this.checkoutForm.value.dt
+    this.usuId = 1
+    this.proId = this.infoProducto.id
+    this.usuCorreo = "prueba@prueba.cl"
+    this.proNombre = "Juan"
+
+    await this.mercadoPagoService.newPago(this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.usuCorreo, this.proNombre)
+      .then((initPoint) => {
+        console.log('URL de MercadoPago recibida:', initPoint);
+
+        if (initPoint) {
+          this.urlMercadoPago = initPoint.init_point;;
+          // Redirige a la URL de MercadoPago
+          console.log(this.urlMercadoPago)
+          window.location.href = this.urlMercadoPago;
+        } else {
+          console.error('La URL de MercadoPago es undefined o vacía.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error al llamar al servicio de MercadoPago:', error);
+      });
   }
+  // this.router.navigate([result.init_point])
 
+  // window.location.href = result.init_point
+  // console.log(this.checkoutForm.value)
+  // const navigateTo = () => {
+  // window.location.href = result.init_point
+  //   window.open(result.init_point)
+  // }
 
+  // navigateTo()
+
+  // newPago() {
+  //   this.venMonto = this.infoProducto.precio
+  //   this.venRutDt = this.checkoutForm.value.rut
+  //   this.tdtId = this.checkoutForm.value.dt
+  //   this.usuId = 1
+  //   this.proId = this.infoProducto.id
+  //   this.usuCorreo = "prueba@prueba.cl"
+  //   this.proNombre = "Juan"
+
+  //   this.mercadoPagoService.newPago(this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.usuCorreo, this.proNombre)
+  //     .then((result) => {
+  //       this.urlMercadoPago = result.init_point
+  //       console.log(this.urlMercadoPago)
+  //       // if (result && result.init_point) {
+  //       //   // Redirige a la URL de MercadoPago
+  //       //   window.location.href = result.init_point;
+  //       // }
+
+  //     })
+
+  // }
 
 }

@@ -12,6 +12,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(correo: any, pass: any): Promise<any> {
+    const user = ""
     const query = queryLogin;
     const variables = {
       usuCorreo: correo.toString(),
@@ -27,5 +28,7 @@ export class LoginService {
       .post<any>(url, body)
       .toPromise()
       .then((response) => response.data.login);
+
   }
+
 }

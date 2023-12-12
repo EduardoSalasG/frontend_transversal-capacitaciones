@@ -123,6 +123,7 @@ export default class ProductComponent implements OnInit {
       nombre: this.curso.Curso.PRO_NOMBRE,
       precio: this.curso.Curso.PRO_PRECIO,
       descripcion: this.curso.Curso.PRO_DESCRIPCION,
+      id: this.curso.PRO_ID
     }
 
     this.productoService.setProductoInfo(infoProducto)
@@ -134,6 +135,7 @@ export default class ProductComponent implements OnInit {
       nombre: this.lead.Lead.PRO_NOMBRE,
       precio: this.lead.Lead.PRO_PRECIO,
       descripcion: this.lead.Lead.PRO_DESCRIPCION,
+
     }
 
     this.productoService.setProductoInfo(infoProducto)
