@@ -26,10 +26,9 @@ export class MercadoPagoService {
       query: query,
       variables: variables,
     };
-    return this.http
-      .post<any>(url, body)
-      .toPromise()
-      .then((response) => { response.data.newPagoMercadoPago, console.log(response.data.newPagoMercadoPago) });
+    console.log('Llamando al servicio de mercadoPago');
+    return this.http.post<any>(url, body).toPromise();
+
 
   }
 }

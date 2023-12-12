@@ -18,7 +18,15 @@ export default class CheckoutComponent {
   public dt = ''
 
   public infoProducto: any;
+  venMonto: any;
+  venRutDt: any
+  tdtId: any
+  usuId: any
+  proId: any
+  usuCorreo: any
+  proNombre: any
 
+  urlMercadoPago: any
   constructor(private router: Router, private productoService: ProductoService, private mercadoPagoService: MercadoPagoService) {
     this.infoProducto = this.productoService.getCursoInfo();
   }
@@ -113,15 +121,7 @@ export default class CheckoutComponent {
     metodoDePago: new FormControl('')
   })
 
-  venMonto: any;
-  venRutDt: any
-  tdtId: any
-  usuId: any
-  proId: any
-  usuCorreo: any
-  proNombre: any
 
-  urlMercadoPago: any
 
   async onSubmit() {
 
@@ -133,54 +133,24 @@ export default class CheckoutComponent {
     this.usuCorreo = "prueba@prueba.cl"
     this.proNombre = "Juan"
 
-    await this.mercadoPagoService.newPago(this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.usuCorreo, this.proNombre)
-      .then((initPoint) => {
-        console.log('URL de MercadoPago recibida:', initPoint);
 
-        if (initPoint) {
-          this.urlMercadoPago = initPoint.init_point;;
-          // Redirige a la URL de MercadoPago
-          console.log(this.urlMercadoPago)
-          window.location.href = this.urlMercadoPago;
-        } else {
-          console.error('La URL de MercadoPago es undefined o vacía.');
-        }
-      })
-      .catch((error) => {
-        console.error('Error al llamar al servicio de MercadoPago:', error);
-      });
+    try {
+      const response = await this.mercadoPagoService.newPago(
+        this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.usuCorreo, this.proNombre
+      );
+      const init_point = response.data.newPagoMercadoPago.init_point;
+
+      this.urlMercadoPago = init_point;
+
+      if (this.urlMercadoPago) {
+        console.log(this.urlMercadoPago);
+        window.location.href = this.urlMercadoPago;
+      } else {
+        console.log('no hay url');
+      }
+    } catch (error) {
+      console.error('Error en compra:', error);
+    }
   }
-  // this.router.navigate([result.init_point])
-
-  // window.location.href = result.init_point
-  // console.log(this.checkoutForm.value)
-  // const navigateTo = () => {
-  // window.location.href = result.init_point
-  //   window.open(result.init_point)
-  // }
-
-  // navigateTo()
-
-  // newPago() {
-  //   this.venMonto = this.infoProducto.precio
-  //   this.venRutDt = this.checkoutForm.value.rut
-  //   this.tdtId = this.checkoutForm.value.dt
-  //   this.usuId = 1
-  //   this.proId = this.infoProducto.id
-  //   this.usuCorreo = "prueba@prueba.cl"
-  //   this.proNombre = "Juan"
-
-  //   this.mercadoPagoService.newPago(this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.usuCorreo, this.proNombre)
-  //     .then((result) => {
-  //       this.urlMercadoPago = result.init_point
-  //       console.log(this.urlMercadoPago)
-  //       // if (result && result.init_point) {
-  //       //   // Redirige a la URL de MercadoPago
-  //       //   window.location.href = result.init_point;
-  //       // }
-
-  //     })
-
-  // }
 
 }
