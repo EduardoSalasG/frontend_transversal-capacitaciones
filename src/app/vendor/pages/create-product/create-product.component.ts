@@ -4,6 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterCursosComponent } from '../../../products/components/filter-cursos/filter-cursos.component';
 import { ProductoService } from '../../../service/producto.service';
+import { CursoService } from '../../../service/curso.service';
 
 export interface Modalidad {
   MOD_ID: string;
@@ -36,9 +37,9 @@ export interface Subcategoria {
   styleUrl: './create-product.component.css'
 })
 export default class CreateProductComponent implements OnInit {
-
+  cursoInfo: any
   constructor(
-    private productosService: ProductoService,
+    private productosService: ProductoService, cursoService: CursoService,
   ) { }
 
   ngOnInit(): void {
@@ -109,6 +110,7 @@ export default class CreateProductComponent implements OnInit {
 
   onSubmit() {
     console.log(this.crearProductoForm.value)
+
   }
 
   public myModal: any = document.getElementById('productoCreadoModal')

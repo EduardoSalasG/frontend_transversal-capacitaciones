@@ -169,42 +169,6 @@ export default class ProductComponent implements OnInit {
       }, 3500);
 
     });
-
-
-
-    // this.route.params.subscribe(params => {
-    //   this.id = params['id']
-    // })
-
-    // await this.productoService.getCursoById(this.id).then((curso) => {
-    //   console.log(curso)
-    //   this.curso = curso;
-    // })
-
-    // await this.productoService.getLeadById(this.id).then((lead) => {
-    //   this.lead = lead;
-    // })
-
-    // if (this.curso) {
-    //   this.isCurso = true
-    // } else if (this.curso === null) {
-    //   this.isCurso = false
-    // } else if (!this.curso && !this.lead) {
-    //   this.router.navigate(['/']);
-    // }
-
-    // if (this.curso === null) {
-    //   this.isCurso = false
-
-    //   return this.isCurso
-    // }
-
-    // else {
-    //   this.isCurso = true
-
-    //   return this.isCurso
-    // }
-
   }
 
 }

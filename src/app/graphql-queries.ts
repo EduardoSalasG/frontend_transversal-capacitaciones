@@ -164,8 +164,8 @@ mutation Mutation($proNombre: String!, $proDescripcion: String!, $proDescripcion
   newCurso(PRO_NOMBRE: $proNombre, PRO_DESCRIPCION: $proDescripcion, PRO_DESCRIPCION_CORTA: $proDescripcionCorta, PRO_PRECIO: $proPrecio, PRO_PRECIO_DESCUENTO: $proPrecioDescuento, CUR_DIRIGIDO_A: $curDirigidoA, CUR_OBJETIVOS: $curObjetivos, CUR_ESTRUCTURA: $curEstructura, CUR_IMAGEN_1: $curImagen1, CUR_IMAGEN_2: $curImagen2, CUR_VIDEO_PROMOCIONAL: $curVideoPromocional, CUR_FECHA_INICIO: $curFechaInicio, CUR_CANTIDAD_MIN_PARTICIPANTES: $curCantidadMinParticipantes, CUR_CANTIDAD_MAX_PARTICIPANTES: $curCantidadMaxParticipantes, CUR_CODIGO_SENCE: $curCodigoSence, CUR_DURACION: $curDuracion, CUR_INCLUYE_CERTIFICACION: $curIncluyeCertificacion, USU_ID: $usuId, TDU_ID: $tduId, MOD_ID: $modId, SCU_ID: $scuId)
 }`
 
-export const queryNewPago = `mutation NewPagoMercadoPago($venMonto: Int!, $venRutDt: String!, $tdtId: Int!, $usuId: Int!, $proId: Int!, $usuCorreo: String!, $proNombre: String!) {
-  newPagoMercadoPago(VEN_MONTO: $venMonto, VEN_RUT_DT: $venRutDt, TDT_ID: $tdtId, USU_ID: $usuId, PRO_ID: $proId, USU_CORREO: $usuCorreo, PRO_NOMBRE: $proNombre) {
+export const queryNewPago = `mutation NewPagoMercadoPago($venMonto: Int!, $venRutDt: String!, $tdtId: Int!, $usuId: Int!, $proId: Int!, $proNombre: String!) {
+  newPagoMercadoPago(VEN_MONTO: $venMonto, VEN_RUT_DT: $venRutDt, TDT_ID: $tdtId, USU_ID: $usuId, PRO_ID: $proId, PRO_NOMBRE: $proNombre) {
     init_point
   }
 }`

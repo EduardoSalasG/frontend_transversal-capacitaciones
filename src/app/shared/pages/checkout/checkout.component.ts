@@ -5,6 +5,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductoService } from '../../../service/producto.service';
 import { MercadoPagoService } from '../../../service/mercado-pago.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-checkout',
@@ -25,9 +26,10 @@ export default class CheckoutComponent {
   proId: any
   usuCorreo: any
   proNombre: any
+  token: any;
 
   urlMercadoPago: any
-  constructor(private router: Router, private productoService: ProductoService, private mercadoPagoService: MercadoPagoService) {
+  constructor(private router: Router, private productoService: ProductoService, private mercadoPagoService: MercadoPagoService, private cookieService: CookieService) {
     this.infoProducto = this.productoService.getCursoInfo();
   }
 
@@ -123,20 +125,22 @@ export default class CheckoutComponent {
 
 
 
+
   async onSubmit() {
+    this.token = this.cookieService.get('token')
+    console.log(this.token)
 
     this.venMonto = this.infoProducto.precio
     this.venRutDt = this.checkoutForm.value.rut
     this.tdtId = this.checkoutForm.value.dt
     this.usuId = 1
     this.proId = this.infoProducto.id
-    this.usuCorreo = "prueba@prueba.cl"
     this.proNombre = this.infoProducto.nombre
 
 
     try {
       const response = await this.mercadoPagoService.newPago(
-        this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.usuCorreo, this.proNombre
+        this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.proNombre
       );
       const init_point = response.data.newPagoMercadoPago.init_point;
 
