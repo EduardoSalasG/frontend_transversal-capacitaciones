@@ -42,6 +42,7 @@ export default class LoginComponent {
           if (this.loginInfo && this.loginInfo.ok && this.loginInfo.token) {
             this.cookieService.set('token', this.loginInfo.token);
             console.log('token guardado');
+            this.router.navigateByUrl('')
           } else {
             console.log(this.loginInfo.msg);
           }

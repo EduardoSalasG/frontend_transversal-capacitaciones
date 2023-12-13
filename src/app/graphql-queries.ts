@@ -131,6 +131,22 @@ query GetValoraciones {
 }
 
 `
+export const getVentasByUserId = `
+query GetVentasByUserId($usuId: ID) {
+  getVentasByUserId(USU_ID: $usuId) {
+    Producto {
+      PRO_NOMBRE
+      PRO_ID
+    }
+    VEN_MONTO
+    VEN_ID
+    VEN_RUT_DT
+    TipoDt {
+      TDT_NOMBRE
+    }
+    updatedAt
+  }
+}`
 
 export const queryLogin = `
 mutation Login($usuCorreo: String!, $usuContrasena: String!) {
@@ -153,3 +169,4 @@ export const queryNewPago = `mutation NewPagoMercadoPago($venMonto: Int!, $venRu
     init_point
   }
 }`
+

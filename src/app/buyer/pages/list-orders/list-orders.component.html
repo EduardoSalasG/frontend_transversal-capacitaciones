@@ -8,22 +8,22 @@
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col">#</th>
+                            <th scope="col">N° de compra</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Precio</th>
-                            <th scope="col">Tipo de producto</th>
+                            <th scope="col">Documento Tributario</th>
                             <th scope="col">Fecha</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        @for (curso of cursos; track $index ) {
+                        @for (compra of compras; track $index ) {
                         <tr class="vert">
-                            <th><a routerLink="/cursos/{{curso.PRO_ID}}"><i class="bi bi-eye"></i></a></th>
-                            <th scope="row">{{$index+1}}</th>
-                            <td>{{curso.Curso.PRO_NOMBRE}}</td>
-                            <td>{{curso.Curso.PRO_PRECIO| currency: 'CLP'}}</td>
-                            <td>{{curso.SubcategoriaCurso.CategoriaCurso.CCU_NOMBRE}}</td>
-                            <td>{{curso.SubcategoriaCurso.SCU_NOMBRE}}</td>
+                            <th><a routerLink="/mis-compras/list/{{compra.VEN_ID}}"><i class="bi bi-eye"></i></a></th>
+                            <th scope="row">{{compra.VEN_ID}}</th>
+                            <td>{{compra.Producto.PRO_NOMBRE}}</td>
+                            <td>{{compra.VEN_MONTO| currency: 'CLP'}}</td>
+                            <td>{{compra.TipoDt.TDT_NOMBRE}}</td>
+                            <td>{{compra.updatedAt | date: 'd/M/y'}}</td>
                         </tr>
                         }
                     </tbody>

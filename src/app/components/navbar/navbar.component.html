@@ -15,12 +15,16 @@
                 <li class="nav-item">
                     <a class="nav-link link_seccion" routerLink="/contacto">Contáctanos</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link link_seccion" routerLink="/mis-productos">Mis productos</a>
-                </li>
+                @if (misCompras) {
                 <li class="nav-item">
                     <a class="nav-link link_seccion" routerLink="/mis-compras">Mis compras</a>
                 </li>
+                }
+                @if (misProductos) {
+                <li class="nav-item">
+                    <a class="nav-link link_seccion" routerLink="/mis-productos">Mis productos</a>
+                </li>
+                }
 
             </ul>
         </div>

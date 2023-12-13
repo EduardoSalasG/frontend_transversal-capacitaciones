@@ -1,28 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { VentasService } from '../../../service/ventas.service';
 
-export interface Curso {
-  PRO_ID: string;
-  SubcategoriaCurso: SubcategoriaCurso;
-  Curso: CursoClass;
+export interface Compras {
+  Producto: Producto;
+  VEN_MONTO: number;
+  VEN_ID: string;
+  VEN_RUT_DT: string;
+  TipoDt: TipoDt;
+  updatedAt: string;
 }
 
-export interface CursoClass {
+export interface Producto {
   PRO_NOMBRE: string;
-  PRO_PRECIO: number;
+  PRO_ID: string;
 }
 
-export interface SubcategoriaCurso {
-  SCU_NOMBRE: string;
-  CategoriaCurso: CategoriaCurso;
+export interface TipoDt {
+  TDT_NOMBRE: string;
 }
-
-export interface CategoriaCurso {
-  CCU_NOMBRE: string;
-}
-
-
 
 @Component({
   selector: 'app-list-orders',
@@ -33,35 +30,17 @@ export interface CategoriaCurso {
 })
 export default class ListOrdersComponent implements OnInit {
 
+  constructor(private ventasService: VentasService) { }
+
   ngOnInit(): void {
-    this.cursos = [{
-      "PRO_ID": "6",
-      "SubcategoriaCurso": {
-        "SCU_NOMBRE": "Cuerpos de Seguridad",
-        "CategoriaCurso": {
-          "CCU_NOMBRE": "Administración Pública"
-        }
-      },
-      "Curso": {
-        "PRO_NOMBRE": "Capacitación para inspectores municipales de seguridad",
-        "PRO_PRECIO": 180000
-      }
-    },
-    {
-      "PRO_ID": "11",
-      "SubcategoriaCurso": {
-        "SCU_NOMBRE": "Cuerpos de Seguridad",
-        "CategoriaCurso": {
-          "CCU_NOMBRE": "Administración Pública"
-        }
-      },
-      "Curso": {
-        "PRO_NOMBRE": "Curso de Supervisor de Seguridad Privada",
-        "PRO_PRECIO": 200000
-      }
-    }]
+    //TODO: Leer id desde token
+    this.ventasService.getVentasByUserId(1)
+      .then((data) => {
+        this.compras = data;
+        console.log(this.compras)
+      })
   }
-  public cursos: Curso[] = []
+  public compras: Compras[] = []
 
 
 }
