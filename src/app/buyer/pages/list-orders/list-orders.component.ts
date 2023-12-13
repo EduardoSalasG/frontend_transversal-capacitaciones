@@ -33,7 +33,7 @@ export default class ListOrdersComponent implements OnInit {
   constructor(private ventasService: VentasService) { }
 
   ngOnInit(): void {
-    //TODO: Leer id desde token
+    //TODO: Leer id desde navbar
     this.ventasService.getVentasByUserId(1)
       .then((data) => {
         this.compras = data;

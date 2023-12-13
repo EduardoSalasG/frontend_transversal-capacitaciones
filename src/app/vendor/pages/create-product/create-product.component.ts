@@ -97,7 +97,6 @@ export default class CreateProductComponent implements OnInit {
     "TDU_DESCRIPCION": "Semanas hábiles de los meses"
   }]
 
-  //TODO: Arreglar subcategorias con su id {nombre: String, id: number}
   public categoriasArray: Categorias[] = []
   public subcategorias: Subcategoria[] = []
   public defaultSubcategoriaSelected = ''
@@ -205,6 +204,6 @@ export default class CreateProductComponent implements OnInit {
     this.defaultSubcategoriaSelected = ''
   }
 
-
+  //TODO: Leer id desde navbar
 
 }

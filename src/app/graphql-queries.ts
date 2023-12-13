@@ -170,3 +170,15 @@ export const queryNewPago = `mutation NewPagoMercadoPago($venMonto: Int!, $venRu
   }
 }`
 
+
+export const validarToken = `
+mutation Mutation($authorization: String) {
+  validarToken(authorization: $authorization) {
+    user {
+      tipoUsuario
+      nombre
+      id
+      email
+    }
+  }
+}`
