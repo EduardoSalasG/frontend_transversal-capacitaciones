@@ -131,7 +131,7 @@ export default class CheckoutComponent {
     this.usuId = 1
     this.proId = this.infoProducto.id
     this.usuCorreo = "prueba@prueba.cl"
-    this.proNombre = "Juan"
+    this.proNombre = this.infoProducto.nombre
 
 
     try {
