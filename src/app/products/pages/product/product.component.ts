@@ -148,7 +148,6 @@ export default class ProductComponent implements OnInit {
 
       try {
         this.curso = await this.productoService.getCursoById(this.id);
-        console.log(this.curso);
 
         this.lead = await this.productoService.getLeadById(this.id);
 

@@ -27,7 +27,7 @@ export class LoginService {
     return this.http
       .post<any>(url, body)
       .toPromise()
-      .then((response) => response.data.login);
+      .then((response) => { response.data.login, console.log(response.data.login) });
 
   }
 
