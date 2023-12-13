@@ -15,12 +15,12 @@
                 <li class="nav-item">
                     <a class="nav-link link_seccion" routerLink="/contacto">Contáctanos</a>
                 </li>
-                @if (misCompras) {
+                @if (tokenValid) {
                 <li class="nav-item">
                     <a class="nav-link link_seccion" routerLink="/mis-compras">Mis compras</a>
                 </li>
                 }
-                @if (misProductos) {
+                @if (vendor) {
                 <li class="nav-item">
                     <a class="nav-link link_seccion" routerLink="/mis-productos">Mis productos</a>
                 </li>
@@ -30,7 +30,12 @@
         </div>
         <div class="d-flex pt-2">
             <i class="bi bi-person-fill i_inicio_sesion pe-2"></i>
+            @if (this.tokenValid) {
+            <a class="link_seccion" routerLink="/home" routerLinkActive="active" (click)="cerrarSesion()">Cerrar
+                sesión</a>
+            }@else {
             <a routerLink="/auth/login" routerLinkActive="active" class="link_seccion">Iniciar sesión</a>
+            }
         </div>
     </div>
 </nav>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from '../../service/auth.service';
 
 interface UserToken {
   id: number
@@ -14,52 +15,73 @@ interface UserToken {
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive,],
+  imports: [CommonModule, RouterLink, RouterLinkActive, RouterModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
 
   constructor(private cookieService: CookieService,
-    // private authService: AuthService,
+    private authService: AuthService,
+    private router: RouterModule
   ) { }
 
   private token: string = ''
+  public tokenValid: boolean = false
+  public vendor: boolean = false
 
   public user: UserToken = {
-    id: 1,
-    nombre: "Juan",
-    email: "prueba@prueba.com",
-    tipoUsuario: [
-      1,
-      2
-    ]
+    id: 0,
+    nombre: '',
+    email: "",
+    tipoUsuario: []
   }
 
-  public misCompras: boolean = false
-  public misProductos: boolean = false
 
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.token = this.cookieService.get('token')
-    this.validarToken()
-    //this.authService.validarToken()
+    await this.validarToken()
+    await this.updateNavBar()
   }
 
-  //TODO: Pasar a authService
-  validarToken() {
+  async validarToken() {
     if (this.token !== '') {
-      this.misCompras = true
-      this.validarVendor()
+      console.log('Token lleno')
+      await this.authService.validarToken(this.token)
+        .then((resp) => {
+          console.log('Respuesta del servicio', resp)
+          if (resp) {
+            this.tokenValid = resp.tokenValid
+            this.vendor = resp.vendor
+            this.user = resp.user
+            console.log(this.tokenValid, this.vendor, this.user)
+          }
+        })
+
     }
     console.log(this.token)
 
   }
-  //TODO: Pasar a authService
-  validarVendor() {
-    if (this.user.tipoUsuario.includes(2))
-      this.misProductos = true
 
+  async updateNavBar() {
+    if (this.user.id) this.tokenValid = true
+
+    if (this.user.tipoUsuario.includes(2)) this.vendor = true
+    console.log(this.tokenValid, this.vendor)
+
+
+
+  }
+
+  cerrarSesion() {
+    this.cookieService.delete('token')
+    this.reloadPage()
+  }
+
+  reloadPage() {
+    // Recarga la página actual
+    window.location.reload();
   }
 
 
