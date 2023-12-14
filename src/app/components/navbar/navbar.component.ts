@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
   async ngOnInit() {
     this.token = this.cookieService.get('token')
     await this.validarToken()
-    await this.updateNavBar()
+    // await this.updateNavBar()
   }
 
   async validarToken() {
@@ -64,15 +64,15 @@ export class NavbarComponent implements OnInit {
 
   }
 
-  async updateNavBar() {
-    if (this.user.id) this.tokenValid = true
+  // async updateNavBar() {
+  //   if (this.user.id) this.tokenValid = true
 
-    if (this.user.tipoUsuario.includes(2)) this.vendor = true
-    console.log(this.tokenValid, this.vendor)
+  //   if (this.user.tipoUsuario.includes(2)) this.vendor = true
+  //   console.log(this.tokenValid, this.vendor)
 
 
 
-  }
+  // }
 
   cerrarSesion() {
     this.cookieService.delete('token')

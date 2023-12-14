@@ -57,18 +57,4 @@ export class AuthService {
     }
 
   }
-
-  validarVendor() {
-
-    let response
-
-    console.log(this.user.tipoUsuario)
-    if (this.user.tipoUsuario) {
-      response = this.user.tipoUsuario.includes(2)
-      console.log(response)
-    }
-
-    return response
-  }
-
 }

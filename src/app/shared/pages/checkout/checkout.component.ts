@@ -139,6 +139,7 @@ export default class CheckoutComponent {
 
 
     try {
+      console.log(this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.proNombre)
       const response = await this.mercadoPagoService.newPago(
         this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.proNombre
       );
