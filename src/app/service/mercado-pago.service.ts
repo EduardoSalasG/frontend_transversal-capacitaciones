@@ -10,7 +10,7 @@ export class MercadoPagoService {
   constructor(private http: HttpClient) { }
 
   newPago(monto: any, rut: any, tipoDt: any,
-    usuarioId: any, productoId: any, nombre: any): Promise<any> {
+    usuarioId: any, productoId: any, correo: any, nombre: any): Promise<any> {
     const query = queryNewPago
     const variables = {
       venMonto: monto,
@@ -18,6 +18,7 @@ export class MercadoPagoService {
       tdtId: parseInt(tipoDt),
       usuId: parseInt(usuarioId),
       proId: parseInt(productoId),
+      usuCorreo: correo,
       proNombre: nombre
     };
     const url = `${this.endpoint}`;

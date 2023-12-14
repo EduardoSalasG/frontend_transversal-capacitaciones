@@ -37,11 +37,29 @@ export interface Subcategoria {
   styleUrl: './create-product.component.css'
 })
 export default class CreateProductComponent implements OnInit {
+  constructor(private productosService: ProductoService, private cursoService: CursoService) { }
   cursoInfo: any
-  constructor(
-    private productosService: ProductoService, cursoService: CursoService,
-  ) { }
-
+  proNombre: any
+  proDescripcion: any
+  proDescripcionCorta: any
+  proPrecio: any
+  precioDescuento: any
+  curDirigidoA: any
+  curObjetivos: any
+  curEstructura: any
+  curImagen1: any
+  curImagen2: any
+  curVideoPromocional: any
+  curFechaInicio: any
+  curCantidadMinParticipantes: any
+  curCantidadMaxParticipantes: any
+  curCodigoSence: any
+  curDuracion: any
+  curIncluyeCertificacion: any
+  usuId: any
+  tduId: any
+  modId: any
+  scuId: any
   ngOnInit(): void {
     this.productosService.getCategoriasCurso().then((data) => {
       this.categoriasArray = data;
@@ -108,7 +126,66 @@ export default class CreateProductComponent implements OnInit {
   })
 
   onSubmit() {
-    console.log(this.crearProductoForm.value)
+
+    const parametros = {
+      proNombre: this.crearProductoForm.value.PRO_NOMBRE,
+      proDescripcion: this.crearProductoForm.value.PRO_DESCRIPCION,
+      proDescripcionCorta: this.crearProductoForm.value.PRO_DESCRIPCION_CORTA,
+      proPrecio: this.crearProductoForm.value.PRO_PRECIO,
+      precioDescuento: this.crearProductoForm.value.PRO_PRECIO_DESCUENTO,
+      curDirigidoA: this.crearProductoForm.value.CUR_DIRIGIDO_A,
+      curObjetivos: this.crearProductoForm.value.CUR_OBJETIVOS,
+      curEstructura: this.crearProductoForm.value.CUR_ESTRUCTURA,
+      curImagen1: this.crearProductoForm.value.CUR_IMAGEN_1,
+      curImagen2: "Imagen2.png",
+      curVideoPromocional: this.crearProductoForm.value.CUR_VIDEO_PROMOCIONAL,
+      curFechaInicio: this.crearProductoForm.value.CUR_FECHA_INICIO,
+      curCantidadMinParticipantes: this.crearProductoForm.value.CUR_CANTIDAD_MIN_PARTICIPANTES,
+      curCantidadMaxParticipantes: this.crearProductoForm.value.CUR_CANTIDAD_MAX_PARTICIPANTES,
+      curCodigoSence: this.crearProductoForm.value.CUR_CODIGO_SENCE,
+      curDuracion: this.crearProductoForm.value.CUR_DURACION,
+      curIncluyeCertificacion: !!this.crearProductoForm.value.CUR_INCLUYE_CERTIFICACION,
+      usuId: 2,
+      tduId: 1,
+      modId: this.crearProductoForm.value.MOD_ID,
+      scuId: this.crearProductoForm.value.SCU_ID
+    };
+
+    // Imprime el objeto en la consola
+    console.log('Parámetros de la función onSubmit:', parametros);
+
+    this.cursoService.newCurso(
+      parametros.proNombre,
+      parametros.proDescripcion,
+      parametros.proDescripcionCorta,
+      parametros.proPrecio,
+      parametros.precioDescuento,
+      parametros.curDirigidoA,
+      parametros.curObjetivos,
+      parametros.curEstructura,
+      parametros.curImagen1,
+      parametros.curImagen2,
+      parametros.curVideoPromocional,
+      parametros.curFechaInicio,
+      parametros.curCantidadMinParticipantes,
+      parametros.curCantidadMaxParticipantes,
+      parametros.curCodigoSence,
+      parametros.curDuracion,
+      parametros.curIncluyeCertificacion,
+      parametros.usuId,
+      parametros.tduId,
+      parametros.modId,
+      parametros.scuId
+    ).then((cursoCreado) => {
+      console.log(cursoCreado)
+      if (cursoCreado) {
+        console.log('Curso creado correctamente');
+      } else {
+        console.log('No se creó el curso');
+      }
+
+
+    })
 
   }
 

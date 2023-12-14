@@ -37,7 +37,7 @@ export default class LoginComponent {
       this.loginService.login(this.usuCorreo, this.usuContrasena)
         .then((loginInfo) => {
           this.loginInfo = loginInfo;
-          console.log(this.loginInfo);
+          console.log('login info:', this.loginInfo);
 
           if (this.loginInfo && this.loginInfo.ok && this.loginInfo.token) {
             this.cookieService.set('token', this.loginInfo.token);

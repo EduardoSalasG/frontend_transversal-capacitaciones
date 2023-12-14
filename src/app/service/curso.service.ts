@@ -41,11 +41,13 @@ export class CursoService {
       curCodigoSence: codigo_sence,
       curDuracion: duracion,
       curIncluyeCertificacion: certificacion,
-      usuId: usuario,
-      tduId: tipo_duracion,
-      modId: modalidad,
-      scuId: subcategoria
+      usuId: parseInt(usuario),
+      tduId: parseInt(tipo_duracion),
+      modId: parseInt(modalidad),
+      scuId: parseInt(subcategoria)
     }
+
+    console.log('variables en el servicio', variables)
     const url = `${this.endpoint}`;
     const body = {
       query: query,
@@ -55,7 +57,10 @@ export class CursoService {
     return this.http
       .post<any>(url, body)
       .toPromise()
-      .then((response) => response.data.newCurso);
+      .then((response) => {
+        console.log('Respuesta GraphQL:', response.data.newCurso);
+        return response.data.newCurso
+      });
   }
 
 
