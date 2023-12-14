@@ -69,7 +69,7 @@ export default class CursosComponent implements OnInit {
         this.cursos = data.getCursosProducto;
       })
 
-    }, 3000)
+    }, 3500)
 
   }
 

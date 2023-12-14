@@ -2,11 +2,6 @@
     font-family: Poppins;
 }
 
-.carusel-section .productos-destacados {
-    height: 400px;
-    width: 24rem;
-}
-
 .carusel-section .card-title {
     font-size: 20px;
     text-transform: capitalize;
@@ -40,8 +35,12 @@
 
 .carusel-section .productos-destacados {
     height: 400px;
-    width: 24rem;
+    width: 21rem;
     border-radius: 13px;
+}
+
+.card-body {
+    height: 53%;
 }
 
 .card-footer .ver-detalle {

@@ -4,7 +4,12 @@
 
 .cards-section .leads-productos {
     height: 400px;
-    width: 24rem;
+    width: 21rem;
+    border-radius: 12px;
+}
+
+.card-body {
+    height: 53%;
 }
 
 .cards-section .img-box {
@@ -38,10 +43,4 @@
 .card-footer .ver-detalle {
     font-weight: 600;
     font-size: 14px;
-}
-
-.cards-section .leads-productos {
-    height: 400px;
-    width: 24rem;
-    border-radius: 12px;
 }

@@ -2,9 +2,17 @@
     font-family: Poppins;
 }
 
+.banner-principal .banner-principal_home {
+    background-image: url(../../../../assets/images/banner-home.png);
+    background-size: cover;
+    background-position: left;
+    border-radius: 16px;
+    height: 240px;
+}
+
 
 .banner-principal .title-banner {
-    color: black;
+    color: white;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -13,11 +21,11 @@
 
 
 .banner-quienes-somos .banner-quienes-somos_home {
-    background-image: url(https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-image: url(../../../../assets/images/banner-quienes-somos.png);
     background-size: cover;
     background-position: bottom;
     border-radius: 16px;
-    height: 336px;
+    height: 240px;
 }
 
 .banner-quienes-somos .title-banner {

@@ -76,7 +76,7 @@ export class NavbarComponent implements OnInit {
 
   cerrarSesion() {
     this.cookieService.delete('token')
-    this.router.navigateByUrl('')
+    this.reloadPage()
   }
 
   reloadPage() {

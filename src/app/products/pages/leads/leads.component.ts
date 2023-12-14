@@ -56,7 +56,7 @@ export default class LeadsComponent implements OnInit {
         this.leads = data.getLeadsProducto;
       })
 
-    }, 3000)
+    }, 3500)
 
   }
 

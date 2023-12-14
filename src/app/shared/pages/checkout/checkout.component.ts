@@ -6,6 +6,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { ProductoService } from '../../../service/producto.service';
 import { MercadoPagoService } from '../../../service/mercado-pago.service';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from '../../../service/auth.service';
+import { response } from 'express';
 
 @Component({
   selector: 'app-checkout',
@@ -29,7 +31,7 @@ export default class CheckoutComponent {
   token: any;
 
   urlMercadoPago: any
-  constructor(private router: Router, private productoService: ProductoService, private mercadoPagoService: MercadoPagoService, private cookieService: CookieService) {
+  constructor(private router: Router, private productoService: ProductoService, private mercadoPagoService: MercadoPagoService, private cookieService: CookieService, private authService: AuthService) {
     this.infoProducto = this.productoService.getCursoInfo();
   }
 
@@ -128,7 +130,14 @@ export default class CheckoutComponent {
 
   async onSubmit() {
     this.token = this.cookieService.get('token')
-    console.log(this.token)
+
+    await this.authService.validarToken(this.token)
+      .then((response) => {
+
+        this.usuCorreo = response.user.email
+        console.log('correo usuario', this.usuCorreo)
+      })
+
 
     this.venMonto = this.infoProducto.precio
     this.venRutDt = this.checkoutForm.value.rut

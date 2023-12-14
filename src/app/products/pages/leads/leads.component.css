@@ -2,6 +2,14 @@
     font-family: Poppins;
 }
 
+.banner-principal .banner-principal_home {
+    background-image: url(../../../../assets/images/banner-home.png);
+    background-size: cover;
+    background-position: left;
+    border-radius: 16px;
+    height: 240px;
+    color: white;
+}
 
 .productos-destacados-carrusel .title-carousel {
     font-size: 24px;

@@ -4,7 +4,7 @@
 
 .carusel-section .productos-destacados {
     height: 400px;
-    width: 24rem;
+    width: 21rem;
     border-radius: 12px;
 }
 
@@ -40,4 +40,8 @@
 .card-footer .ver-detalle {
     font-weight: 600;
     font-size: 14px;
+}
+
+.card-body {
+    height: 53%;
 }

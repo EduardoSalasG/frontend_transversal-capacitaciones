@@ -12,9 +12,15 @@
 
 .cards-section .cursos-productos {
     height: 400px;
-    width: 24rem;
     border-radius: 13px;
+    width: 21rem;
 }
+
+.card-body {
+    height: 53%;
+}
+
+
 
 .cards-section .card-title {
     font-size: 20px;

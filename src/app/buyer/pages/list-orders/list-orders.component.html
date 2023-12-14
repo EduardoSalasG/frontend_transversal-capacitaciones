@@ -1,5 +1,5 @@
 <section>
-    <div class="container">
+    <div class="container mis-compras-list">
         <div class="row">
             <div class="col-12">
                 <h2 class="m-5">Mis compras</h2>
@@ -15,6 +15,20 @@
                             <th scope="col">Fecha</th>
                         </tr>
                     </thead>
+                    @if (!showContent) {
+                    <tbody class="table-group-divider">
+                        @for (compra of compras; track $index ) {
+                        <tr class="vert placeholder-glow">
+                            <th><a><i class="bi bi-eye"></i></a></th>
+                            <td> <span class="placeholder col-7"></span></td>
+                            <td> <span class="placeholder col-7"></span></td>
+                            <td> <span class="placeholder col-7"></span></td>
+                            <td> <span class="placeholder col-7"></span></td>
+                            <td> <span class="placeholder col-7"></span></td>
+                        </tr>
+                        }
+                    </tbody>
+                    }@else {
                     <tbody class="table-group-divider">
                         @for (compra of compras; track $index ) {
                         <tr class="vert">
@@ -27,6 +41,7 @@
                         </tr>
                         }
                     </tbody>
+                    }
                 </table>
             </div>
         </div>
