@@ -156,7 +156,6 @@ export default class CheckoutComponent {
       }
     } catch (error) {
       console.error('Error en compra:', error);
-      this.router.navigate
     }
   }
 

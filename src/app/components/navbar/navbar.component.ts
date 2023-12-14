@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from '../../service/auth.service';
 
@@ -15,7 +15,7 @@ interface UserToken {
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, RouterModule],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private cookieService: CookieService,
     private authService: AuthService,
-    private router: RouterModule
+    private router: Router
   ) { }
 
   private token: string = ''
@@ -76,7 +76,7 @@ export class NavbarComponent implements OnInit {
 
   cerrarSesion() {
     this.cookieService.delete('token')
-    this.reloadPage()
+    this.router.navigateByUrl('')
   }
 
   reloadPage() {
