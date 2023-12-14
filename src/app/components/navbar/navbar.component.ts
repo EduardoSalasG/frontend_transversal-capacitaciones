@@ -66,7 +66,6 @@ export class NavbarComponent implements OnInit {
 
   async updateNavBar() {
     if (this.user.id) this.tokenValid = true
-
     if (this.user.tipoUsuario.includes(2)) this.vendor = true
     console.log(this.tokenValid, this.vendor)
 

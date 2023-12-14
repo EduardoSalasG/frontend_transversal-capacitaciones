@@ -135,12 +135,13 @@ export default class CheckoutComponent {
     this.tdtId = this.checkoutForm.value.dt
     this.usuId = 1
     this.proId = this.infoProducto.id
+    this.usuCorreo = "prueba@prueba.cl"
     this.proNombre = this.infoProducto.nombre
 
 
     try {
       const response = await this.mercadoPagoService.newPago(
-        this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.proNombre
+        this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.proNombre, this.usuCorreo
       );
       const init_point = response.data.newPagoMercadoPago.init_point;
 
@@ -154,6 +155,7 @@ export default class CheckoutComponent {
       }
     } catch (error) {
       console.error('Error en compra:', error);
+      this.router.navigate
     }
   }
 

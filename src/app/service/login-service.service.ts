@@ -12,7 +12,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(correo: any, pass: any): Promise<any> {
-    const user = ""
+
     const query = queryLogin;
     const variables = {
       usuCorreo: correo.toString(),
@@ -27,7 +27,11 @@ export class LoginService {
     return this.http
       .post<any>(url, body)
       .toPromise()
-      .then((response) => { response.data.login, console.log(response.data.login) });
+      .then((response) => {
+        console.log('respuesta servicio login', response.data.login);
+        return response.data.login;
+
+      });
 
   }
 
