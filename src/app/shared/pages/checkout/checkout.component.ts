@@ -151,7 +151,7 @@ export default class CheckoutComponent {
     try {
       console.log(this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.proNombre)
       const response = await this.mercadoPagoService.newPago(
-        this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.proNombre, this.usuCorreo
+        this.venMonto, this.venRutDt, this.tdtId, this.usuId, this.proId, this.usuCorreo, this.proNombre
       );
       const init_point = response.data.newPagoMercadoPago.init_point;
 

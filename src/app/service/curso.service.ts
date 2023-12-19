@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getCursosQuery, queryNewCurso } from '../graphql-queries';
+import { getCursosByUserId, getCursosQuery, queryNewCurso } from '../graphql-queries';
 import { request } from 'graphql-request';
 import { HttpClient } from '@angular/common/http';
 
@@ -63,5 +63,18 @@ export class CursoService {
       });
   }
 
+  getCursosByUserId(id: number): Promise<any> {
+    const query = getCursosByUserId;
+    const variables = {
+      usuId: id.toString(),
+    };
+
+    const url = `${this.endpoint}?query=${encodeURIComponent(query)}&variables=${encodeURIComponent(JSON.stringify(variables))}`;
+    return this.http.get<any>(url)
+      .toPromise()
+      .then((response) => {
+        return response.data.getCursosByUserId
+      })
+  }
 
 }

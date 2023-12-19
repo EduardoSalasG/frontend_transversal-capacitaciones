@@ -30,7 +30,7 @@ export interface TipoDt {
 })
 export default class ListOrdersComponent implements OnInit {
   public showContent = false;
-  placeholders: any[] = [1, 2];
+  placeholders: any[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   constructor(private ventasService: VentasService) { }
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export default class ListOrdersComponent implements OnInit {
 
     setTimeout(() => {
       this.showContent = true
-    }, 3500);
+    }, 4500);
 
   }
   public compras: Compras[] = []

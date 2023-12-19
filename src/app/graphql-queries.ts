@@ -148,6 +148,23 @@ query GetVentasByUserId($usuId: ID) {
   }
 }`
 
+export const getCursosByUserId = `
+query GetCursosByUserId($usuId: ID) {
+  getCursosByUserId(USU_ID: $usuId) {
+    Curso {
+      PRO_NOMBRE
+      PRO_ID
+      PRO_PRECIO
+    }
+    SubcategoriaCurso {
+      SCU_NOMBRE
+      CategoriaCurso {
+        CCU_NOMBRE
+      }
+    }
+  }
+}`
+
 export const queryLogin = `
 mutation Login($usuCorreo: String!, $usuContrasena: String!) {
   login(USU_CORREO: $usuCorreo, USU_CONTRASENA: $usuContrasena) {

@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<section>
+<section class="list-products">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -36,6 +36,27 @@
                                     routerLink="/mis-productos/create">Nuevo</a></th>
                         </tr>
                     </thead>
+                    @if (!showContent) {
+                    <tbody class="table-group-divider">
+                        @for (placeholder of placeholders; track $index ) {
+                        <tr class="vert placeholder-glow">
+                            <th><a><i class="bi bi-eye"></i></a></th>
+                            <td> <span class="placeholder col-3"></span></td>
+                            <td> <span class="placeholder col-6"></span></td>
+                            <td> <span class="placeholder col-6"></span></td>
+                            <td> <span class="placeholder col-6"></span></td>
+                            <td> <span class="placeholder col-6"></span></td>
+                            <td class="d-flex">
+                                <a href="#" class="btn btn-warning disabled placeholder col-6 me-2"></a>
+                                <a href="#" class="btn btn-danger disabled placeholder col-6"></a>
+                            </td>
+
+                        </tr>
+                        }
+                    </tbody>
+                    }@else {
+
+
                     <tbody class="table-group-divider">
                         @for (curso of cursos; track $index ) {
                         <tr class="vert">
@@ -55,6 +76,7 @@
                         </tr>
                         }
                     </tbody>
+                    }
                 </table>
             </div>
         </div>

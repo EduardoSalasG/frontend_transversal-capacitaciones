@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CursoService } from '../../../service/curso.service';
 
 export interface Curso {
   PRO_ID: string;
@@ -32,34 +33,21 @@ export interface CategoriaCurso {
   styleUrl: './list-products.component.css'
 })
 export default class ListProductsComponent implements OnInit {
+  public showContent = false;
+  placeholders: any[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
+  constructor(private cursoService: CursoService) { }
   ngOnInit(): void {
-    this.cursos = [{
-      "PRO_ID": "6",
-      "SubcategoriaCurso": {
-        "SCU_NOMBRE": "Cuerpos de Seguridad",
-        "CategoriaCurso": {
-          "CCU_NOMBRE": "Administración Pública"
-        }
-      },
-      "Curso": {
-        "PRO_NOMBRE": "Capacitación para inspectores municipales de seguridad",
-        "PRO_PRECIO": 180000
-      }
-    },
-    {
-      "PRO_ID": "11",
-      "SubcategoriaCurso": {
-        "SCU_NOMBRE": "Cuerpos de Seguridad",
-        "CategoriaCurso": {
-          "CCU_NOMBRE": "Administración Pública"
-        }
-      },
-      "Curso": {
-        "PRO_NOMBRE": "Curso de Supervisor de Seguridad Privada",
-        "PRO_PRECIO": 200000
-      }
-    }]
+
+    this.cursoService.getCursosByUserId(1)
+      .then((data) => {
+        this.cursos = data;
+        console.log(this.cursos)
+      })
+
+    setTimeout(() => {
+      this.showContent = true
+    }, 4500);
   }
 
   public cursos: Curso[] = []
